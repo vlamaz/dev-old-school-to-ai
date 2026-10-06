@@ -15,7 +15,7 @@ claude -rc		Remote control
 
 **Commands:**
 
-```claude
+```text
 /usage			Show session cost, plan usage, and activity stats
 /resume 		Resume a previous conversation
 /context		Visualize current context usage as a colored grid
@@ -59,7 +59,7 @@ opencode -prompt <text>		Prompt to use
 
 **Commands:**
 
-```opencode
+```text
 /stats			Show session cost, plan usage, and activity stats
 /sessions		Resume a previous conversation
 /compact		Free up context by summarizing the conversation so far
@@ -92,7 +92,7 @@ GitHub Copilot CLI commands.
 
 **Commands:**
 
-```claude
+```text
 /usage			Show session cost, plan usage, and activity stats
 /resume			Resume a previous conversation
 /context		Visualize current context usage as a colored grid
