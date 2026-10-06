@@ -7,9 +7,7 @@ Claude Code CLI options and commands.
 **CLI:**
 
 ```shell
-	cd /folder
-	claude			Opens claude in folder
-
+	claude			Opens claude in current folder
 	claude --help	Show help and available commands
 	claude -r		Resumes conversation
 	claude -rc		Remote control
@@ -30,12 +28,12 @@ Claude Code CLI options and commands.
 	/memory			Edit CLAUDE.md files and memory settings
 	/btw 			Ask a quick side question without interrupting the main conversation
 	/rewind 		Restore the code and/or conversation to a previous point
-    /rename         Renames current conversation
+	/rename			Renames current conversation
 	/mcp 			Manage MCP servers
-	/agents         (removed) Ask Claude to create/manage subagents, or edit .claude/agents/
+	/agents			(removed) Ask Claude to create/manage subagents, or edit .claude/agents/
 	/help			Show help and available commands
-	Shift+Tab   	Mode: Manual | Accept edits | Auto | Plan
-	Esc 			Claude intrerruption
+	Shift+Tab		Mode: Manual | Accept edits | Auto | Plan
+	Esc				Claude intrerruption
 	@				Referencia ficheros o skills
 	!				Shell mode
 ```
@@ -51,38 +49,35 @@ OpenCode CLI options and commands.
 **CLI:**
 
 ```shell
-	cd /folder
-	opencode		            Opens OpenCode in folder.
-
-    opencode run <text>         Interacts with OpenCode programmatically
-
-	opencode --help	            Shows help and available commands
-	opencode -s	<id>            Resumes conversation
-    opencode -c		            Resumes last conversation
-	opencode -prompt <text> 	Prompt to use
+	opencode					Opens OpenCode in current folder
+	opencode run <text>			Interacts with OpenCode programmatically
+	opencode --help				Shows help and available commands
+	opencode -s	<id>			Resumes conversation
+	opencode -c					Resumes last conversation
+	opencode -prompt <text>		Prompt to use
 ```
 
 **Commands:**
 
 ```opencode
 	/stats			Show session cost, plan usage, and activity stats
-	/sessions 		Resume a previous conversation
+	/sessions		Resume a previous conversation
 	/compact		Free up context by summarizing the conversation so far
 	/new			Start a new session with empty context; previous session stays on disk (resumable with /resume)
 	/models			Set the AI model for OpenCode
 	/effort			Set effort level for model usage (low | medium | hard)
-	/init 			Guided setup for creating or updating AGENTS.md
-	/btw 			Ask a quick side question without interrupting the main conversation
-    /undo           Undo changes
-	/redo           Redo changes
-	/mcps 			Manage MCP servers
-	/agents         (removed) Ask Claude to create/manage subagents, or edit .claude/agents/
+	/init			Guided setup for creating or updating AGENTS.md
+	/btw			Ask a quick side question without interrupting the main conversation
+    /undo			Undo changes
+	/redo			Redo changes
+	/mcps			Manage MCP servers
+	/agents			(removed) Ask Claude to create/manage subagents, or edit .claude/agents/
 	/help			Show help and available commands
-    /details        Show tool execution details
-    /share          Share session
+    /details		Show tool execution details
+    /share			Share session
 	/update			Update OpenCode
-	Shift+Tab   	Mode: Build | Plan
-	Esc 			OpenCode intrerruption
+	Shift+Tab		Mode: Build | Plan
+	Esc				OpenCode intrerruption
 	@				Referencia ficheros o skills
 	!				Shell mode
 ```
@@ -99,20 +94,20 @@ GitHub Copilot CLI commands.
 
 ```claude
 	/usage			Show session cost, plan usage, and activity stats
-	/resume 		Resume a previous conversation
+	/resume			Resume a previous conversation
 	/context		Visualize current context usage as a colored grid
 	/compact		Free up context by summarizing the conversation so far
 	/new			Start a new session with empty context; previous session stays on disk (resumable with /resume)
-	/model 			Set the AI model for Claude Code
-	/init 			Initialize a new CLAUDE.md file with codebase documentation (AGENTS.md)
-	/ask 			Ask a quick side question without interrupting the main conversation
-	/undo	 		Restore the code and/or conversation to a previous point
-    /rename         Renames current conversation
-	/mcp 			Manage MCP servers
-	/agents         (removed) Ask Claude to create/manage subagents, or edit .claude/agents/
+	/model			Set the AI model for Claude Code
+	/init			Initialize a new CLAUDE.md file with codebase documentation (AGENTS.md)
+	/ask			Ask a quick side question without interrupting the main conversation
+	/undo			Restore the code and/or conversation to a previous point
+	/rename			Renames current conversation
+	/mcp			Manage MCP servers
+	/agents			(removed) Ask Claude to create/manage subagents, or edit .claude/agents/
 	/help			Show help and available commands
-	Shift+Tab   	Mode: Standard | Plan | Autopilot
-	Esc 			Claude intrerruption
+	Shift+Tab		Mode: Standard | Plan | Autopilot
+	Esc				Claude intrerruption
 	@				Referencia ficheros o skills
 	!				Shell mode
 ```
