@@ -27,9 +27,7 @@ The goal is not to replace engineering fundamentals, but to amplify them with AI
 
 ## 🛠 Topics Covered
 
-- Software Architecture
-- Domain-Driven Design (DDD)
-- Hexagonal Architecture
+- AI Fundamentals
 - Prompt Engineering
 - Context Engineering
 - GitHub Copilot
@@ -44,11 +42,11 @@ The goal is not to replace engineering fundamentals, but to amplify them with AI
 
 ```text
 .
-├── notes/
-├── prompts/
-├── architecture/
-├── ai-tools/
-├── projects/
-├── experiments/
-└── resources/
+├── 01-ai-foundations/
+├── 02-ai-assisted-development/
+├── 03-agentic-engineering/
+├── 04-spec-driven-development/
+├── 05-projects/
+├── 06-experiments/
+└── 07-resources/
 ```

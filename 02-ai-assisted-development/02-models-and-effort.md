@@ -2,6 +2,8 @@
 
 A model is the underlying AI engine (the specific set of trained weights) that processes your project, reads files, and decides how to write or debug code.
 
+Comparison of Models: Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models
+
 **AI Tools settings**
 
 _Claude Code_

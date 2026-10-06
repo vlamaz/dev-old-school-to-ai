@@ -74,7 +74,7 @@ Include proper typing and basic structure.
 
 Invoked using `/<name>`
 
-```claude
+```text
 /component <name>
 ```
 
