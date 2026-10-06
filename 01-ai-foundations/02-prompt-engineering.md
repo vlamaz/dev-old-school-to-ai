@@ -405,27 +405,7 @@ Use when:
 
 ---
 
-## Context engineering
-
-Prompt Engineering focuses on instructions.
-
-Context Engineering focuses on providing the right information.
-
-Examples:
-
-- Requirements
-- API documentation
-- README files
-- Architecture documents
-- Coding standards
-
-Many modern AI workflows rely more on context than prompting.
-
 ## Links
 
 - OpenAI Developers Docs - Prompting: https://developers.openai.com/api/docs/guides/prompting
 - Prompt Engineering Guide: https://www.promptingguide.ai
-
-```
-
-```
