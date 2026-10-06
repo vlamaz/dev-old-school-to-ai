@@ -24,7 +24,8 @@ Subagents are specialized assistants that primary agents can invoke for specific
 
 ```text
 Global: ~/.config/opencode/agents/
-Per-project: .opencode/agents/
+Per-project:
+    .opencode/agents/
     .claude/agents/
 ```
 
@@ -53,7 +54,7 @@ You are in code review mode. Focus on:
 Provide constructive feedback without making direct changes.
 ```
 
-**Agent Params:**
+### Agent Params
 
 **Description**: Brief description
 
@@ -75,6 +76,6 @@ Temperature values typically range from 0.0 to 1.0:
 
 **Permissions**: You can configure permissions to manage what actions an agent can take. Each permission key can be set to:
 
-    "ask" — Prompt for approval before running the tool
-    "allow" — Allow all operations without approval
-    "deny" — Disable the tool
+- "ask" — Prompt for approval before running the tool
+- "allow" — Allow all operations without approval
+- "deny" — Disable the tool
