@@ -12,6 +12,8 @@ Examples:
 - Llama
 - DeepSeek
 
+Comparison of Models: Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models
+
 ## Reasoning models
 
 Reasoning language models (RLMs) or large reasoning models (LRMs) are LLMs that are trained to solve tasks that require several steps of reasoning.
