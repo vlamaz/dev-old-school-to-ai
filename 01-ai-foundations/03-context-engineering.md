@@ -30,6 +30,8 @@ Tool Outputs
 Context
 ```
 
+The best AI results rarely come from clever prompts. They come from providing the right context: requirements, architecture, business rules, examples, constraints, and relevant knowledge. Context is the fuel that powers effective AI-assisted development.
+
 ## Sources of Context
 
 ### 1. User Prompt:
