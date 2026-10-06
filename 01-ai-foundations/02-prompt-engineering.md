@@ -57,13 +57,19 @@ Desired format.
 Return only code.
 ```
 
+---
+
 ## Prompt engineering
 
 Prompt engineering is the process of writing effective instructions for a model, such that it consistently generates content that meets your requirements.
 
-### Role prompting
+### Prompting patterns
 
-Role prompting (also known as persona prompting) is a prompt engineering technique where you assign a specific identity, profession, or character to a Large Language Model (LLM) before asking it to perform a task.
+Prompt Patterns are reusable prompting techniques that guide AI models toward more reliable, consistent, and effective outputs for specific types of tasks.
+
+#### 1. Role prompting
+
+Tell the AI who it should be.
 
 Example:
 
@@ -81,9 +87,13 @@ Common roles:
 - QA Engineer
 - Security Specialist
 
-Best used for: Advisory tasks, creative writing, or adapting explanations for a specific target audience.
+Use when:
 
-### Task prompting
+- Seeking expert advice
+- Requiring domain-specific knowledge
+- Needing consistent behavior
+
+#### 2. Task prompting
 
 Task Prompting is the practice of clearly telling an AI what you want it to do.
 
@@ -120,9 +130,40 @@ Output:
 - Explanation
 ```
 
-Best used for: Direct execution, operational workflows, data processing, and predictable formatting.
+Use when:
 
-### Few-shot prompting
+- Requesting deliverables
+- Delegating work to AI
+
+#### 3. Structured Prompt Pattern
+
+Organize the prompt into sections.
+
+```text
+Role:
+Senior React Engineer
+ 
+Context:
+Taxi Booking Application
+ 
+Task:
+Create booking page
+ 
+Requirements:
+- Maps
+- Price estimation
+ 
+Output:
+React TypeScript code
+```
+
+Use when:
+
+- Complex tasks
+- Large outputs
+- Production work
+
+#### 4. Few-shot prompting
 
 Provide several examples to teach the pattern.
 
@@ -157,9 +198,14 @@ Requirement:
 Users can cancel a taxi booking.
 ```
 
-### Chain of thought
+Use when:
 
-Break a complex task into logical steps.
+- Format consistency matters
+- Teaching a custom style
+
+#### 5. Chain of thought
+
+Break a complex task into logical steps. Ask AI to reason step-by-step.
 
 Instead of:
 
@@ -178,6 +224,186 @@ Use:
 ```
 
 Complex problems become easier for the model to solve.
+
+Use when:
+
+- Complex problems
+- Planning
+- Architecture decisions
+- Root-cause analysis
+
+#### 6. Decomposition Pattern
+
+Break a large problem into smaller ones.
+
+```text
+Analyze this feature by:
+
+1. Requirements
+2. Architecture
+3. API Design
+4. Database Design
+5. Risks
+```
+
+Use when:
+
+- Large projects
+- Specifications
+- Solution design
+
+#### 7. Critic Pattern
+
+Ask AI to review and criticize its own output.
+
+```text
+Create a solution.
+```
+
+ 
+Then review the solution and identify weaknesses.
+
+Use when:
+
+- Architecture reviews
+- Requirement validation
+- Risk analysis
+
+#### 8. Debate Pattern
+
+Generate multiple viewpoints.
+
+```text
+Argue both for and against microservices for this project.
+```
+
+Use when:
+
+- Decision making
+- Trade-off analysis
+- Architecture discussions
+
+#### 9. Socratic Pattern
+
+Ask questions instead of providing solutions immediately.
+
+```text
+Act as a mentor.
+ 
+Help me design this system by asking questions one at a time.
+```
+
+Use when:
+
+- Learning
+- Coaching
+- Requirements discovery
+
+#### 10. Output Formatting Pattern
+
+Specify the desired response format.
+
+```text
+Return the result as:
+ 
+- User Story
+- Acceptance Criteria
+- EARS Requirements
+```
+
+or
+
+```text
+Return JSON only.
+```
+
+Use when:
+
+- Automation
+- Structured outputs
+- Agent workflows
+
+#### 11. Planning Pattern
+
+Generate a plan before implementation.
+
+```text
+Do not write code.
+ 
+First create an implementation plan.
+```
+
+Use when:
+
+- Large features
+- Agentic workflows
+- Spec Driven Development
+
+#### 12. Specification Pattern
+
+Generate requirements before design or code.
+
+```text
+Create:
+ 
+1. User Stories
+2. Acceptance Criteria
+3. EARS Requirements
+4. Functional Requirements
+ 
+Do not provide implementation details.
+```
+
+Use when:
+
+- OpenSpec
+- Kiro
+- BMAD
+- Spec Kit
+- SDD
+
+#### 13. Reflection Pattern
+
+Ask AI to evaluate its work and improve it.
+
+```text
+Generate a solution.
+ 
+Then evaluate it against best practices.
+ 
+Then improve it.
+```
+
+Use when:
+
+- High-quality outputs
+- Documentation
+- Architecture proposals
+
+#### 14. Agent Delegation Pattern
+
+Divide work into specialized roles.
+
+```text
+Architecture Agent:
+Design the solution.
+ 
+Security Agent:
+Review security risks.
+ 
+QA Agent:
+Generate test cases.
+ 
+Combine the results.
+```
+
+Use when:
+
+- Agentic engineering
+- Multi-agent systems
+- Complex projects
+
+---
 
 ## Context engineering
 
@@ -199,3 +425,7 @@ Many modern AI workflows rely more on context than prompting.
 
 - OpenAI Developers Docs - Prompting: https://developers.openai.com/api/docs/guides/prompting
 - Prompt Engineering Guide: https://www.promptingguide.ai
+
+```
+
+```
