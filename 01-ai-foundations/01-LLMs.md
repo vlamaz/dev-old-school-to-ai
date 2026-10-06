@@ -1,6 +1,8 @@
 # LLM (Large Language Model)
 
-An LLM is an AI model trained on massive amounts of text that can understand and generate human language.
+An LLM is an AI model trained on massive amounts of text that can understand and generate human language. In other words, **LLM** is the **AI brain**.
+
+Think of an LLM as a very advanced autocomplete system that has learned patterns from books, articles, websites, code, and other text.
 
 Examples:
 
@@ -9,10 +11,6 @@ Examples:
 - Gemini
 - Llama
 - DeepSeek
-
-Think of an LLM as a very advanced autocomplete system that has learned patterns from books, articles, websites, code, and other text.
-
-One-Liner summary: **LLM is the AI brain**
 
 ## Reasoning models
 
@@ -43,8 +41,6 @@ Core Parts of Agentic Systems:
 In software development, the shift from standard "copilots" (which just autocomplete code) to agentic software development involves autonomous systems that can read entire codebases, write multi-file features, run tests, and fix bugs natively.
 
 The industry is moving toward Agentic Engineering—where specialized multi-agent systems act as active teammates while developers provide high-level design and guardrails.
-
----
 
 ## Key Concepts
 
