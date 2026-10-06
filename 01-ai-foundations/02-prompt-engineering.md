@@ -2,14 +2,59 @@
 
 Prompting is the process of providing input to a model. The quality of your output often depends on how well you’re able to prompt the model.
 
-Good prompting should include:
+## Anatomy of a Good Prompt
 
-```markdown
+The quality of the output often depends on the quality of the prompt.
+
+A good prompt usually contains:
+
+```text
 Role
 Context
 Task
 Constraints and rules
 Output format
+```
+
+### Role
+
+Defines who the AI should act as.
+
+```text
+You are a senior fronted developer.
+```
+
+### Context
+
+Background information.
+
+```text
+The application uses React, TypeScript and Material UI.
+```
+
+### Goal (Task)
+
+What needs to be accomplished. Defines the objective.
+
+```text
+Build a React login page.
+```
+
+### Constraints and rules
+
+Rules and limitations.
+
+```text
+Use functional components.
+Do not use Redux.
+```
+
+### Output formatting
+
+Desired format.
+
+```text
+Return only code.
 ```
 
 ## Prompt engineering
@@ -20,23 +65,135 @@ Prompt engineering is the process of writing effective instructions for a model,
 
 Role prompting (also known as persona prompting) is a prompt engineering technique where you assign a specific identity, profession, or character to a Large Language Model (LLM) before asking it to perform a task.
 
-To write an effective role prompt, structure your input using this standard three-step approach:
+Example:
 
-1. Assign the Role: Explicitly tell the AI who it is (e.g., "Act as a senior software engineer" or "You are a patient high school math teacher").
-2. Define the Task: State clearly what you need the AI to do (e.g., "Review this piece of code" or "Explain compound interest").
-3. Set Constraints & Style: Establish the target audience, tone, format, or length restrictions (e.g., "Explain it to a beginner, keep it under 200 words, and use everyday analogies")
+```text
+You are a senior software architect.
+
+Design a scalable taxi booking system.
+```
+
+Common roles:
+
+- Solution Architect
+- Senior Backend Engineer
+- Product Owner
+- QA Engineer
+- Security Specialist
+
+Best used for: Advisory tasks, creative writing, or adapting explanations for a specific target audience.
 
 ### Task prompting
 
-### Constraints
+Task Prompting is the practice of clearly telling an AI what you want it to do.
 
-### Output formatting
+A task prompt defines the objective, expected outcome, and scope of work.
+
+A clear task:
+
+- Reduces ambiguity
+- Produces more accurate results
+- Requires fewer follow-up prompts
+- Improves consistency
+
+Example:
+
+```markdown
+Task:
+Create a REST API for taxi bookings.
+
+Requirements:
+
+- CRUD operations
+- JWT authentication
+- PostgreSQL
+
+Constraints:
+
+- Use Node.js and Express
+- Follow Hexagonal Architecture
+
+Output:
+
+- Folder structure
+- Source code
+- Explanation
+```
+
+Best used for: Direct execution, operational workflows, data processing, and predictable formatting.
 
 ### Few-shot prompting
 
+Provide several examples to teach the pattern.
+
+Useful when consistent output formatting is required.
+
+```text
+Convert requirements into User Stories.
+
+Example 1
+
+Requirement:
+Users can reset their password.
+
+Output:
+As a registered user,
+I want to reset my password,
+So that I can regain access to my account.
+
+Example 2
+
+Requirement:
+Users can update their profile.
+
+Output:
+As a registered user,
+I want to update my profile information,
+So that my account details remain current.
+
+Now convert this requirement:
+
+Requirement:
+Users can cancel a taxi booking.
+```
+
 ### Chain of thought
 
-### Structured prompts
+Break a complex task into logical steps.
+
+Instead of:
+
+```text
+Design the entire system.
+```
+
+Use:
+
+```text
+1. Identify requirements
+2. Design architecture
+3. Define APIs
+4. Identify risks
+5. Recommend implementation plan
+```
+
+Complex problems become easier for the model to solve.
+
+## Context engineering
+
+Prompt Engineering focuses on instructions.
+
+Context Engineering focuses on providing the right information.
+
+Examples:
+
+- Requirements
+- API documentation
+- README files
+- Architecture documents
+- Coding standards
+
+Many modern AI workflows rely more on context than prompting.
 
 ## Links
 

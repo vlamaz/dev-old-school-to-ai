@@ -57,7 +57,7 @@ Per-project:
 
 ```
 
-**Sample:**
+**Example:**
 
 ```markdown
 ---
@@ -92,7 +92,7 @@ Fires inevitably on lifecycle events.
 settings.json
 ```
 
-**Sample:**
+**Example:**
 
 This hook completely blocks Claude from using rm to delete anything in your project
 
@@ -217,7 +217,7 @@ Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e
 
 `.mcp.json`
 
-**Sample:**
+**Example:**
 
 ```json
 {

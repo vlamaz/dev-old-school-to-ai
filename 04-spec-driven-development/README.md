@@ -78,7 +78,7 @@ Why Use EARS?
 - Test-Ready: Because it features a clear trigger and response, QA teams can directly transform these requirements into acceptance criteria and test cases.
 - AI-Friendly: Modern AI coding assistants and requirements-driven development tools parse EARS syntax perfectly to generate exact code without "hallucinations".
 
-Sample:
+Example:
 
 ```markdown
 # Requirements Specification: ATM Cash Dispenser

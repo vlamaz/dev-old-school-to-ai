@@ -29,7 +29,7 @@ Per-project:
     .claude/agents/
 ```
 
-**Sample:**
+**Example:**
 
 `~/.config/opencode/agents/review.md`
 
