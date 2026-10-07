@@ -65,19 +65,19 @@ Texts with similar meanings are located near each other in embedding space.
 ### Step 1: Store Documents
 
 ```text
-Authentication.md
-Booking.md
-Payments.md
+authentication.md
+booking.md
+payments.md
 ```
 
 ### Step 2: Create Embeddings
 
 ```text
-Authentication.md
+authentication.md
         ↓
 Embedding Vector
 
-Booking.md
+booking.md
         ↓
 Embedding Vector
 ```
@@ -107,15 +107,14 @@ The vector database finds documents whose embeddings are closest to the question
 ```text
 Question Vector
         ↓
-
 Closest Match:
-Authentication.md
+authentication.md
 ```
 
 ### Step 6: Send to LLM
 
 ```text
-Authentication.md
+authentication.md
         ↓
 LLM
         ↓
