@@ -6,29 +6,11 @@ Comparison of Models: Intelligence, Performance & Price Analysis: https://artifi
 
 **AI Tools settings**
 
-_Claude Code_
-
-Run command:
-
-```text
-/model
-```
-
-_OpenCode_
-
-Run command:
-
-```text
-/models
-```
-
-_GitHub Copilot_
-
-Run command:
-
-```text
-/model
-```
+| Tool               | Command   |
+| ------------------ | --------- |
+| Claude Code        | `/model`  |
+| OpenCode           | `/models` |
+| GitHub Copilot CLI | `/model`  |
 
 ## Effort
 
@@ -37,35 +19,17 @@ If the model determines what the AI knows (its intelligence ceiling), the effort
 
 **Common Effort Levels**
 
-- Low: Best for simple questions, quick lookups, or high-volume tasks where speed and low cost matter most.
-- Medium: A balanced default for routine coding, standard bug fixes, and general workflows.
-- High / Extra High (xhigh): Designed for complex reasoning, difficult debugging, multi-file changes, and nuanced problems.
-- Max: Absolute maximum reasoning capacity reserved for intricate architecture, deep security analysis, or the hardest logical constraints.
+| Level                     | Best for                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Low                       | Simple questions, quick lookups, or high-volume tasks where speed and low cost matter most.             |
+| Medium                    | A balanced default for routine coding, standard bug fixes, and general workflows.                       |
+| High / Extra High (xhigh) | Complex reasoning, difficult debugging, multi-file changes, and nuanced problems.                       |
+| Max                       | Intricate architecture, deep security analysis, or the hardest logical constraints (maximum reasoning). |
 
 **AI Tools settings**
 
-_Claude Code_
-
-Run command:
-
-```text
-/effort
-```
-
-_OpenCode_
-
-Run command:
-
-```text
-/effort
-```
-
-_GitHub Copilot_
-
-To adjust the reasoning level in GitHub Copilot Chat, follow these steps:
-
-1. Open the Copilot Chat window in your editor (e.g., VS Code or Visual Studio).
-2. Click the model dropdown menu (typically located at the top or bottom of the chat interface).
-3. Select a model that supports advanced reasoning (such as o1 or o3-mini).
-4. Locate the "Thinking Effort" slider or dropdown that appears next to the model selection.
-5. Choose your desired level (e.g., Low, Medium, or High) based on the complexity of your task.
+| Tool               | How to set effort                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Claude Code        | `/effort`                                                                                                  |
+| OpenCode           | `Ctrl+T` cycles model variants (provider-specific reasoning effort), or `opencode run --variant <variant>` |
+| GitHub Copilot CLI | `/model` (pick the reasoning effort for the selected model), or `copilot --effort=<level>`                 |
