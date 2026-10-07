@@ -2,7 +2,7 @@
 
 - **ADR**: Architecture Decision Record, a short document that records an important technical or design decision and the reasons behind it.
 
-- **Agent**: An AI system that uses a model, tools, instructions, and often memory to work toward a goal. Unlike a basic chatbot, an agent can take actions such as searching files or calling APIs. See [Agents](../03-agentic-engineering/02-agents.md).
+- **Agent**: An AI system that uses a model, tools, instructions, and often memory to work toward a goal. Unlike a basic chatbot, an agent can take actions such as searching files or calling APIs. See [Agents](../02-agentic-engineering/02-agents.md).
 
 - **Context**: The information available to a model when it generates a response, such as the prompt, conversation history, documentation, source code, and tool outputs. See [Context Engineering](03-context-engineering.md).
 
@@ -14,7 +14,7 @@
 
 - **Fine-tuning**: Further training a pre-trained model on data for a particular task, domain, or behavior. Unlike RAG, fine-tuning changes the model rather than retrieving information at answer time. See [LLMs](01-LLMs.md) and [RAG](04-rag.md).
 
-- **Harness**: The software infrastructure around a model that gives an agent its tools, workflow, and validation mechanisms. See [Harness](../03-agentic-engineering/01-harness.md).
+- **Harness**: The software infrastructure around a model that gives an agent its tools, workflow, and validation mechanisms. See [Harness](../02-agentic-engineering/01-harness.md).
 
 - **Inference**: The process of using a trained model to generate a prediction or response. See [LLMs](01-LLMs.md).
 

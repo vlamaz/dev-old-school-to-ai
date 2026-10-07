@@ -1,10 +1,33 @@
 # Harness & Context
 
-An AI agent harness (also called AI scaffolding) is the software infrastructure that wraps around a Large Language Model (LLM) to turn it into an active, functional AI agent. See [Harness](../03-agentic-engineering/01-harness.md).
+An AI agent harness (also called AI scaffolding) is the software infrastructure that wraps around a Large Language Model (LLM) to turn it into an active, functional AI agent. See [Harness](../02-agentic-engineering/01-harness.md).
 
-For a Claude Code-style harness, a **good context window** is not about adding more files. It's about adding the right files.
+In Claude Code, OpenCode, and GitHub Copilot CLI, a **good context window** is not about adding more files. It's about adding the right files.
+
+## How Each Tool Loads Context
+
+Only instruction files are loaded automatically. Everything else (README, specs, docs, source files) enters the context only when the agent reads it, you reference it, or an instruction file imports it.
+
+|                       | Claude Code                                                                                                 | OpenCode                                                                                      | GitHub Copilot CLI                                                                                    |
+| --------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Project instructions  | `CLAUDE.md` or `.claude/CLAUDE.md`. `AGENTS.md` is read only if no `CLAUDE.md` or `CLAUDE.local.md` exists. | `AGENTS.md`. `CLAUDE.md` is a fallback, used only if no `AGENTS.md` exists.                   | `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` (all merged).            |
+| Personal instructions | `~/.claude/CLAUDE.md`                                                                                       | `~/.config/opencode/AGENTS.md` (falls back to `~/.claude/CLAUDE.md`)                          | `~/.copilot/copilot-instructions.md`                                                                  |
+| Scoped rules          | `.claude/rules/*.md` with `paths:` frontmatter                                                              | `instructions` array in `opencode.json` (globs and URLs)                                      | `.github/instructions/**/*.instructions.md` with `applyTo:` frontmatter. Also reads `.claude/rules/`. |
+| File imports          | `@path` (loaded at launch)                                                                                  | Not automatic. Use the `instructions` array, or tell the agent in `AGENTS.md` to read a file. | `@path` (files must be inside the repository)                                                         |
+| `/init` generates     | `CLAUDE.md`                                                                                                 | `AGENTS.md`                                                                                   | `.github/copilot-instructions.md`                                                                     |
+| Memory                | Auto memory written by Claude, stored outside the repo (see [Memory](#memory))                              | No built-in memory file documented                                                            | Built-in memory, not a repository file                                                                |
+| Check what is loaded  | `/context`, `/memory`                                                                                       | Not documented                                                                                | `/instructions`, `/env`                                                                               |
+
+Notes:
+
+- Instruction files are advisory context, not enforcement. Use hooks (Claude Code, Copilot CLI) or permission rules to enforce behavior.
+- For one file shared by all tools, keep `AGENTS.md` and add a `CLAUDE.md` for Claude Code that imports it (see [AGENTS.md](#agentsmd)).
+- Keep instruction files short and specific. Claude Code recommends under 200 lines per `CLAUDE.md`. Put sometimes-relevant knowledge in skills or scoped rules.
+- Do not assume commands or files are interchangeable between tools.
 
 ## Project Essential Files
+
+Except for the instruction files, none of these are loaded automatically. Reference them in your prompt (for example `@specs/booking/requirements.md`) or import them from an instruction file.
 
 ### README.md
 
@@ -43,7 +66,7 @@ project/
 
 ### AGENTS.md
 
-The most important file for AI agents.
+The main instructions file for AI agents. It is a cross-tool convention: native in OpenCode and Copilot CLI, and read by Claude Code only when no `CLAUDE.md` exists.
 Workflow guidance: how AI agents should work.
 
 ```markdown
@@ -81,6 +104,8 @@ Should contain at least:
 - Testing instructions
 - Security considerations
 
+Include only what the agent cannot infer from the code. Avoid file-by-file descriptions, long tutorials, and information that changes frequently.
+
 Location:
 
 ```text
@@ -90,35 +115,37 @@ project/
 
 Examples: <https://agents.md/#examples>
 
-### MEMORY.md
+**Using it with Claude Code**
 
-Long-term project knowledge.
+Claude Code does not read `AGENTS.md` when a `CLAUDE.md` exists. To keep `AGENTS.md` as the single source, create a `CLAUDE.md` that imports it:
 
 ```markdown
-# Project Decisions
+@AGENTS.md
 
-- OAuth2 authentication
-- PostgreSQL selected over MongoDB
+## Claude Code
 
-# Lessons Learned
-
-Driver API rate limits require caching.
+Use plan mode for changes under `src/billing/`.
 ```
 
-Provides:
+Prefer the import over a symlink on Windows, where symlinks need Developer Mode or Administrator rights.
 
-- Historical decisions
-- Project memory
-- Lessons learned
+### Memory
 
-```text
-project/
-└── MEMORY.md
-```
+Long-term knowledge (decisions, lessons learned) does not have a standard file across tools.
+
+- **Claude Code**: `MEMORY.md` is the index of _auto memory_. Claude writes it, it lives in `~/.claude/projects/<project>/memory/`, it is local to your machine, and only its first 200 lines (or 25KB) load each session. A `MEMORY.md` in the project root is **not** loaded automatically.
+- **OpenCode**: no built-in memory file is documented.
+- **GitHub Copilot CLI**: built-in memory exists, but it is not a repository file.
+
+For knowledge the whole team and every tool should share, commit it instead:
+
+- Decisions and their reasons: [ADRs](#adrs)
+- Rules and conventions: `AGENTS.md` (or `CLAUDE.md`)
+- Requirements: [Specifications](#specifications)
 
 ### Specifications
 
-The most valuable context after `AGENTS.md`.
+Often the most useful task-specific context. Not loaded automatically: reference the relevant spec in your prompt.
 
 Example:
 
@@ -180,6 +207,8 @@ Provides:
 - System design
 - Boundaries
 - Dependencies
+
+Keep it to decisions and boundaries that are not obvious from the code. Claude Code recommends leaving out what it can derive by reading the codebase, such as directory layouts and dependency lists.
 
 ### Domain Knowledge
 
@@ -252,33 +281,22 @@ Provides:
 
 ## Context Priority
 
-When building a context window, I'd load files in this order:
+A suggested order of importance for a task. This is a heuristic, not tool behavior; the tools load instruction files automatically and everything else on demand.
 
 ```text
 1. User Request
 2. Relevant Spec
-3. AGENTS.md
-4. MEMORY.md
-5. README.md
-6. Architecture Docs
-7. Business Rules
-8. Relevant Source Files
+3. AGENTS.md / CLAUDE.md (loaded automatically)
+4. Relevant ADRs and Business Rules
+5. Architecture Docs
+6. Relevant Source Files
 ```
 
-For example:
+For example, to implement booking cancellation, point the agent to the relevant files:
 
 ```text
-Implement booking cancellation
-```
-
-Load:
-
-```text
-specs/booking/requirements.md
-AGENTS.md
-MEMORY.md
-docs/business-rules.md
-src/booking/\*
+Implement booking cancellation following @specs/booking/requirements.md
+and @docs/business-rules.md. The code lives in src/booking/.
 ```
 
 Don't load:

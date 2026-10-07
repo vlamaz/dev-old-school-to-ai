@@ -53,7 +53,7 @@ Think of a harness as the operating system for an AI agent.
    ```text
    README.md
    AGENTS.md
-   MEMORY.md
+   Memory files (tool-specific)
    Current files
    Git changes
    Conversation history
@@ -74,7 +74,7 @@ Think of a harness as the operating system for an AI agent.
    ```text
    specs/booking.md
    AGENTS.md
-   src/bookings/\*
+   src/bookings/
    ```
 
    before Claude starts reasoning.

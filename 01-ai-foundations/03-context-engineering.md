@@ -21,7 +21,7 @@ README.md
     +
 AGENTS.md
     +
-MEMORY.md
+Memory
     +
 Specifications
     +
@@ -63,18 +63,18 @@ Context is the fuel that powers effective AI-assisted development.
    ```text
    AGENTS.md
    CLAUDE.md
-   .copilot-instructions.md
+   .github/copilot-instructions.md
    ```
 
 5. **Memory**
 
-   Contains project-specific knowledge accumulated over time.
+   Contains project-specific knowledge accumulated over time. Memory is tool-specific: a `MEMORY.md` in the project root is not loaded automatically.
 
    Examples:
 
    ```text
-   MEMORY.md
-   project-memory.md
+   Claude Code auto memory (~/.claude/projects/<project>/memory/MEMORY.md)
+   Decisions recorded as ADRs
    ```
 
 6. **Specifications**
@@ -108,7 +108,6 @@ project/
 │
 ├── README.md
 ├── AGENTS.md
-├── MEMORY.md
 │
 ├── specs/
 │   ├── requirements.md
