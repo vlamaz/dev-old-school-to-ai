@@ -1,8 +1,8 @@
 # Context engineering
 
-Prompt Engineering focuses on instructions.
+**Prompt Engineering** focuses on instructions.
 
-Context Engineering focuses on providing the right information.
+**Context Engineering** focuses on providing the right information.
 
 ## What Is Context?
 
@@ -12,101 +12,117 @@ Examples:
 
 ```text
 User Prompt
-+
+    +
 Chat History
-+
+    +
 Source Code
-+
+    +
 README.md
-+
+    +
 AGENTS.md
-+
+    +
 MEMORY.md
-+
+    +
 Specifications
-+
+    +
 Tool Outputs
-=
+    =
 Context
 ```
 
-The best AI results rarely come from clever prompts. They come from providing the right context: requirements, architecture, business rules, examples, constraints, and relevant knowledge. Context is the fuel that powers effective AI-assisted development.
+The best AI results rarely come from clever prompts. They come from providing the right context: requirements, architecture, business rules, examples, constraints, and relevant knowledge.
+
+Context is the fuel that powers effective AI-assisted development.
 
 ## Sources of Context
 
-### 1. User Prompt:
+1. **User Prompt**
 
-Direct instructions.
+   Direct instructions.
 
-### 2. Conversation History:
+2. **Conversation History**
 
-Previous messages provide continuity.
+   Previous messages provide continuity.
 
-### 3. Documentation:
+3. **Documentation**
 
-Examples:
+   Examples:
+
+   ```text
+   README.md
+   CONTRIBUTING.md
+   docs/*
+   ```
+
+4. **Agent Instructions**
+
+   Guide AI behavior.
+
+   Examples:
+
+   ```text
+   AGENTS.md
+   CLAUDE.md
+   .copilot-instructions.md
+   ```
+
+5. **Memory**
+
+   Contains project-specific knowledge accumulated over time.
+
+   Examples:
+
+   ```text
+   MEMORY.md
+   project-memory.md
+   ```
+
+6. **Specifications**
+
+   Examples:
+
+   ```text
+   Requirements
+   User Stories
+   EARS
+   OpenSpec documents
+   Design documents
+   ```
+
+7. **External Knowledge**
+
+   Examples:
+
+   ```text
+   RAG
+   Knowledge Bases
+   Wikis
+   MCP Servers
+   Databases
+   ```
+
+## Common Context files
 
 ```text
-README.md
-CONTRIBUTING.md
-docs/*
-```
-
-### 4. Agent Instructions:
-
-Guide AI behavior.
-
-Examples:
-
-```text
-AGENTS.md
-CLAUDE.md
-.copilot-instructions.md
-```
-
-### 5. Memory:
-
-Contains project-specific knowledge accumulated over time.
-
-Examples:
-
-```text
-MEMORY.md
-project-memory.md
-```
-
-### 6. Specifications
-
-Examples:
-
-```text
-Requirements
-User Stories
-EARS
-OpenSpec documents
-Design documents
-```
-
-### 7. External Knowledge
-
-Examples:
-
-```text
-RAG
-Knowledge Bases
-Wikis
-MCP Servers
-Databases
-```
-
-## Context files
-
-```text
-README.md
-AGENTS.md
-MEMORY.md
-specs/
-docs/
+project/
+│
+├── README.md
+├── AGENTS.md
+├── MEMORY.md
+│
+├── specs/
+│   ├── requirements.md
+│   ├── design.md
+│   └── tasks.md
+│
+├── docs/
+│   ├── architecture.md
+│   ├── api.md
+│   └── adr/
+│
+└── knowledge/
+    ├── glossary.md
+    └── business-rules.md
 ```
 
 ## Context Windows

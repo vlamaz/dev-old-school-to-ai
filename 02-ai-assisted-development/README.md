@@ -25,3 +25,8 @@ GitHub Copilot CLI brings GitHub Copilot's agentic coding capabilities to the te
 - Prioritize Claude Code information and examples.
 - Keep OpenCode and GitHub Copilot CLI guidance clearly separated from Claude Code guidance.
 - Do not assume that commands or configuration are interchangeable between the tools.
+
+## Topics in this Chapter
+
+1. [Commands](01-commands.md)
+2. [Models & Effort](02-models-and-effort.md)

@@ -47,8 +47,6 @@ Examples:
 - Netflix recommendations
 - Spam filters
 
-Most AI systems used today belong to this category.
-
 **2. General AI (Future Goal)**
 
 An AI capable of performing any intellectual task that a human can do.
@@ -90,25 +88,35 @@ Instead of writing every line manually, developers increasingly focus on:
 - Defining requirements
 - Creating specifications
 - Reviewing AI-generated solutions
-  -Making architectural decisions
+- Making architectural decisions
 - Ensuring quality and security
 
-_The Evolution_
+#### Evolution
 
 ```text
 Developer 1.0
-↓
+  ↓
 Writes all code manually
 
 Developer 2.0
-↓
+  ↓
 Uses frameworks and libraries
 
 Developer 3.0
-↓
+  ↓
 Uses AI assistants to accelerate development
 
 AI-Powered Developer
-↓
+  ↓
 Designs, specifies, orchestrates, and validates software with AI
 ```
+
+## Topics in this Chapter
+
+1. [LLMs](01-LLMs.md)
+2. [Prompt Engineering](02-prompt-engineering.md)
+3. [Context Engineering](03-context-engineering.md)
+4. [RAG](04-rag.md)
+5. [Embeddings](05-embeddings.md)
+6. [AI Workflows](06-ai-workflows.md)
+7. [Glossary](07-glossary.md)

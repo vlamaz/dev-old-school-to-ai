@@ -4,7 +4,7 @@ An LLM is an AI model trained on massive amounts of text that can understand and
 
 Think of an LLM as a very advanced autocomplete system that has learned patterns from books, articles, websites, code, and other text.
 
-Examples:
+Examples of models:
 
 - ChatGPT
 - Claude
@@ -12,20 +12,18 @@ Examples:
 - Llama
 - DeepSeek
 
-Comparison of Models: Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models
-
 ## Reasoning models
 
 Reasoning language models (RLMs) or large reasoning models (LRMs) are LLMs that are trained to solve tasks that require several steps of reasoning.
 
 They tend to do better on logic, math, and programming tasks than standard LLMs, can revisit and revise earlier steps, make use of extra computations, and enhance performance when increasing the number of parameters, training examples, and training computations.
 
-Popular Reasoning Models:
+Popular RLMs:
 
-- OpenAI o-series & GPT-5 series: Includes models like o1, o3, o4-mini, and advanced GPT-5 variants, which use explicit internal thinking tokens and reinforcement learning to handle multi-step logic, math, and coding.
-- DeepSeek-R1: A prominent open-weight reasoning model that popularized highly efficient intermediate reasoning traces and competitive performance at a fraction of training costs.
-- Anthropic Claude (3.7 Sonnet / 3.5 variants): Features explicit "thinking" capabilities and toggles to extend test-time compute for deeper analysis.
-- Google Gemini (2.5 Pro / Think Mode): Incorporates advanced reasoning modes built to break down complex queries and run verification steps
+- **OpenAI o-series & GPT-5 series**: Includes models like o1, o3, o4-mini, and advanced GPT-5 variants, which use explicit internal thinking tokens and reinforcement learning to handle multi-step logic, math, and coding.
+- **DeepSeek-R1**: A prominent open-weight reasoning model that popularized highly efficient intermediate reasoning traces and competitive performance at a fraction of training costs.
+- **Anthropic Claude (3.7 Sonnet / 3.5 variants)**: Features explicit "thinking" capabilities and toggles to extend test-time compute for deeper analysis.
+- **Google Gemini (2.5 Pro / Think Mode)**: Incorporates advanced reasoning modes built to break down complex queries and run verification steps
 
 ## Agentic systems
 
@@ -35,10 +33,10 @@ Unlike regular chatbots that only reply when you type a prompt, agentic systems 
 
 Core Parts of Agentic Systems:
 
-- Reasoning Core: Uses an AI model to understand the goal and decide what to do next.
-- Planning: Breaks big jobs into smaller, manageable tasks.
-- Memory: Remembers past steps and learns from previous results to fix mistakes.
-- Tools: Connects to external software, web searches, or databases to take real action.
+- **Reasoning Core**: Uses an AI model to understand the goal and decide what to do next.
+- **Planning**: Breaks big jobs into smaller, manageable tasks.
+- **Memory**: Remembers past steps and learns from previous results to fix mistakes.
+- **Tools**: Connects to external software, web searches, or databases to take real action.
 
 In software development, the shift from standard "copilots" (which just autocomplete code) to agentic software development involves autonomous systems that can read entire codebases, write multi-file features, run tests, and fix bugs natively.
 
@@ -94,7 +92,6 @@ Example:
 ```text
 User: Create a React login page
 
- 
 Model:
 Generates React code
 ```
@@ -117,18 +114,17 @@ User Gets Response
 
 Temperature controls how creative or predictable an LLM's responses are.
 
-_Lower_ temperatures produce more consistent and deterministic outputs.
+- **Lower temperatures** produce more consistent and <u>deterministic</u> outputs.
 
-Low Temperature (0.0 - 0.3)
+  Low Temperature (`0.0 - 0.3`)
 
-Good for:
+  Good for:
+  - Coding
+  - Data extraction
+  - Documentation
+  - Technical explanations
 
-- Coding
-- Data extraction
-- Documentation
-- Technical explanations
-
-_Higher_ temperatures produce more creative and varied outputs.
+- **Higher temperatures** produce more <u>creative</u> and varied outputs.
 
 ### Hallucinations
 
@@ -144,7 +140,7 @@ As a result, it may:
 - Misstate dates or numbers
 - Make unsupported assumptions
 
-How to Reduce Hallucinations?
+**How to Reduce Hallucinations?**
 
 1. Use RAG: Provide external, trusted information.
 2. Give More Context.
@@ -160,6 +156,8 @@ How to Reduce Hallucinations?
 
 The context window is the amount of information an LLM can "remember" and consider during a conversation or task.
 
+In other words, **Context Window** is the AI's **working memory**.
+
 Examples:
 
 - Your current prompt
@@ -167,11 +165,15 @@ Examples:
 - Attached documents
 - Instructions
 
-Think of it as the AI's working memory.
-
 A larger context window allows the model to handle bigger documents and maintain longer conversations.
 
-One-Liner summary: **Context Window is the AI's working memory**
+However, increasing the context window size presents challenges:
+
+- Costs: the computational costs grow quadratically as the number of tokens increases.
+
+- Performance: it determines how much information the model can process when generating responses, affecting its ability to produce coherent and contextually relevant output.
+
++info: [Context Engineering](03-context-engineering.md)
 
 ## Tokenization
 
@@ -196,9 +198,7 @@ A token is not always a word. It can be:
 - A punctuation mark
 - A symbol
 
-LLMs read and generate tokens, not raw text.
-
-One-Liner summary: **Tokenization is How the AI reads text**
+LLMs read and generate tokens, not raw text. **Tokenization** is How the AI **reads text**.
 
 ## RAG (Retrieval-Augmented Generation)
 
@@ -208,11 +208,11 @@ Instead of relying only on its training data:
 
 ```text
 Question
-↓
+   ↓
 Search relevant documents
-↓
+   ↓
 Provide documents to the LLM
-↓
+   ↓
 Generate answer
 ```
 
@@ -226,4 +226,10 @@ Examples:
 
 RAG helps AI provide more accurate, up-to-date, and domain-specific answers.
 
-One-Liner summary: **RAG is How the AI looks up external knowledge before answering**
+In other words, **RAG** is How the AI looks up external knowledge before answering.
+
++info: [RAG](04-rag.md)
+
+## Links
+
+- Comparison of Models: Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models

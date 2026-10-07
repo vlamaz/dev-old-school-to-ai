@@ -209,3 +209,7 @@ This document outlines the system requirements for the **ATM Cash Dispenser** us
 - Kiro: <https://kiro.dev/>
 - BMAD (Breakthrough Method for Agile AI-Driven Development): <https://docs.bmad-method.org/>
 - Spec Kit (Github): <https://github.com/github/spec-kit>
+
+## Topics in this Chapter
+
+1. [OpenSpec](01-openspec.md)
