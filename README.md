@@ -43,8 +43,8 @@ The goal is not to replace engineering fundamentals, but to amplify them with AI
 ```text
 .
 ├── 01-ai-foundations/
-├── 02-ai-assisted-development/
-├── 03-agentic-engineering/
+├── 02-agentic-engineering/
+├── 03-ai-assisted-development/
 ├── 04-spec-driven-development/
 ├── 05-projects/
 ├── 06-experiments/
