@@ -120,4 +120,7 @@ Designs, specifies, orchestrates, and validates software with AI
 5. [Embeddings](05-embeddings.md)
 6. [AI Workflows](06-ai-workflows.md)
 7. [Tools](07-tools.md)
-8. [Glossary](08-glossary.md)
+
+Others:
+
+- [Glossary](glossary.md)
