@@ -180,12 +180,12 @@ because the meaning is similar.
 
 Embeddings are the foundation of:
 
-RAG systems
-Semantic search
-Knowledge bases
-AI assistants
-Document retrieval
-Recommendation systems
+- RAG systems
+- Semantic search
+- Knowledge bases
+- AI assistants
+- Document retrieval
+- Recommendation systems
 
 Without embeddings, most modern RAG architectures would not exist.
 
