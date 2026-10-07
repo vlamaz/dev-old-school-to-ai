@@ -184,7 +184,7 @@ authentication.md
 
 Then the LLM uses the retrieved document to answer.
 
-+info: [Embeddings](05-embeddings.md)
+See: [Embeddings](05-embeddings.md)
 
 ## Real-World Example
 

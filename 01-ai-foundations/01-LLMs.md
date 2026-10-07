@@ -173,7 +173,7 @@ However, increasing the context window size presents challenges:
 
 - Performance: it determines how much information the model can process when generating responses, affecting its ability to produce coherent and contextually relevant output.
 
-+info: [Context Engineering](03-context-engineering.md)
+See: [Context Engineering](03-context-engineering.md)
 
 ## Tokenization
 
@@ -228,7 +228,7 @@ RAG helps AI provide more accurate, up-to-date, and domain-specific answers.
 
 In other words, **RAG** is How the AI looks up external knowledge before answering.
 
-+info: [RAG](04-rag.md)
+See: [RAG](04-rag.md)
 
 ## Links
 

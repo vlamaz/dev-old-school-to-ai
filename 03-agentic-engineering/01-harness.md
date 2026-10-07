@@ -4,254 +4,263 @@ An AI agent harness (also called AI scaffolding) is the software infrastructure 
 
 Building a highly reliable AI worker depends less on upgrading to a slightly larger model and more on building a robust harness. A well-engineered harness minimizes a model's tendency to hallucinate by forcing it to verify its own work through automated code execution, step-by-step validation loops, and heavily constrained operating environments.
 
-## README.md
+## Why Do We Need a Harness?
 
-File that contains human documentation: what the project is.
-
-**Location:**
+An LLM alone can only generate text:
 
 ```text
-Project: README.md
+User
+  ↓
+LLM
+  ↓
+Answer
 ```
 
-## AGENTS.md
+To become an agent, it needs:
 
-Workflow guidance: how AI agents should work. Same as CLAUDE.md but generic. (<https://agents.md/#examples>)
+- Tools
+- Memory
+- Context
+- Permissions
+- Execution logic
 
-Should contain at least:
+The harness provides all of these.
 
-- Project overview
-- Build and test commands
-- Code style guidelines
-- Testing instructions
-- Security considerations
+## What a Harness Does
 
-**Location:**
+Think of a harness as the operating system for an AI agent.
 
 ```text
-Project: AGENTS.md
+                 Harness
+                    │
+    ┌───────────────┼───────────────┐
+    │               │               │
+ Context         Tools          Memory
+    │               │               │
+    └───────────────┼───────────────┘
+                    │
+                   LLM
 ```
 
-## MEMORY.md
+### Main Responsibilities
 
-Long-term project context.
+1. **Context Management**
 
-**Location:**
+   Collects information for the model.
+
+   Examples:
+
+   ```text
+   README.md
+   AGENTS.md
+   MEMORY.md
+   Current files
+   Git changes
+   Conversation history
+   Specifications
+   ```
+
+   Before sending a request, the harness builds the context window.
+
+   Example:
+
+   ```text
+   User:
+   Implement booking cancellation.
+   ```
+
+   The harness may automatically read:
+
+   ```text
+   specs/booking.md
+   AGENTS.md
+   src/bookings/\*
+   ```
+
+   before Claude starts reasoning.
+
+2. **Tool Management**
+
+   The harness exposes tools to the model.
+
+   Examples:
+
+   ```text
+   Read File
+   Write File
+   Search Code
+   Git
+   MCP
+   Database
+   Terminal
+   ```
+
+   The model can request:
+
+   ```text
+   Read auth service
+   ```
+
+   The harness executes the request and returns the result.
+
+3. **Permission Management**
+
+   The harness controls what the AI may do.
+
+   Example:
+
+   ```text
+   ✅ Read files
+   ✅ Search repository
+   ✅ Run tests
+    
+   ❌ Delete repository
+   ❌ Deploy to production
+   ```
+
+   This provides safety and governance.
+
+4. **Memory Management**
+
+   The harness maintains project knowledge.
+
+   Examples:
+
+   ```text
+   Architecture decisions
+   Business rules
+   Known constraints
+   Completed work
+   ```
+
+   This helps the agent remain consistent over time.
+
+5. **Workflow Execution**
+
+   Most agents follow a reasoning loop:
+
+   ```text
+   Observe
+   ↓
+   Think
+   ↓
+   Plan
+   ↓
+   Act
+   ↓
+   Evaluate
+   ```
+
+   The harness orchestrates this loop.
+
+#### Example
+
+**User Request**
 
 ```text
-Project: MEMORY.md
+Implement booking cancellation.
 ```
 
-## USER-DEFINED COMMANDS
-
-Commands for quick, deterministic, and single-use tasks. The user activates them manually.
-
-**Locations:**
+**Harness Workflow**
 
 ```text
-Global: ~/.config/opencode/commands/
-Per-project:
-.opencode/commands/<name>.md
-.claude/commands/<name>.md
-.agents/commands/<name>.md
-
+Read requirements
+  ↓
+Search existing code
+  ↓
+Read relevant files
+  ↓
+Generate implementation
+  ↓
+Run tests
+  ↓
+Return results
 ```
 
-**Example:**
+The user sees one request.
 
-```markdown
----
-description: Create a new component
-agent: build
-model: anthropic/claude-3-5-sonnet-20241022
----
+The harness coordinates many internal actions.
 
-Create a new React component named $ARGUMENTS with TypeScript support.
-Include proper typing and basic structure.
-```
+## Harness vs Agent
 
-**Usage:**
+People often confuse the two.
 
-Invoked using `/<name>`
+**Simple Analogy**
 
 ```text
-/component <name>
+Driver  =   Agent     -> The driver makes decisions.
+Car     =   Harness   -> The car provides the capabilities needed to move.
 ```
 
-## HOOKS
+### Agent
 
-User-defined commands or logic that execute automatically at specific lifecycle events.
-
-Enforces guardrails, blocks code, or automates side-effects.
-
-Fires inevitably on lifecycle events.
-
-**Locations:**
+The decision-maker.
 
 ```text
-settings.json
+Booking Agent
+Security Agent
+QA Agent
 ```
 
-**Example:**
+The agent reasons about what to do.
 
-This hook completely blocks Claude from using rm to delete anything in your project
+### Harness
 
-```json
-{
-  "hooks": [
-    {
-      "event": "PreToolUse",
-      "matcher": {
-        "tool": "Bash"
-      },
-      "handler": {
-        "type": "command",
-        "command": "grep -q 'rm ' && echo 'ERROR: rm commands are blocked!' && exit 2 || exit 0"
-      }
-    }
-  ]
-}
-```
-
-**Events:**
-
-Claude Code supports up to 33 lifecycle hook events spanning session management, prompt validation, tool usage, subagent delegation, and task progression.
-
-More used ones:
-
-1. `PreToolUse`
-
-- When it fires: Right before any tool (like a Bash command or a file edit) executes.
-- Primary Use Case: Security and safety gates. It passes the tool arguments to your script, allowing you to parse the incoming command and throw an exit 2 to hard-block risky actions (like rm -rf / or unintended production deployments) before they run.
-
-1. `PostToolUse`
-
-- When it fires: Immediately after a tool finishes executing successfully.
-- Primary Use Case: Workspace automation. This is most commonly used to run localized code formatters (like Prettier, Black, or Ruff) or linters right after Claude updates or creates a file so your codebase stays clean.
-
-1. `Stop`
-
-- When it fires: When Claude completely finishes a response turn or task, right before returning control to the user.
-- Primary Use Case: Quality gates and test enforcement. Developers use it to trigger an automated test suite or build check. If the tests fail, you can block the response and instruct Claude to stay in the loop until the code passes.
-
-1. `SessionStart`
-
-- When it fires: The absolute moment a new Claude Code session is initiated or an existing session is resumed.
-- Primary Use Case: Environment setup and context injection. Ideal for dynamically injecting environment variables, checking software dependencies, or preparing local logs.
-
-1. `Notification`
-
-- When it fires: Whenever Claude triggers a notification alert (e.g., when it is waiting for your manual permission or finishes a long-running background task).
-- Primary Use Case: Team alerting. Used to forward the internal event out to systems like Slack, Discord, or desktop push notifications so you can safely look away while the AI is working.
-
-## SKILLS
-
-A skill is a set of instructions - packaged as a simple folder - that teaches Claude
-how to handle specific tasks or workflows.
-Skills provide the recipes: step-by-step instructions on how to create something
-valuable.
-
-<https://www.skills.sh/>
-
-Create one folder per skill name and put inside it:
-
-- `SKILL.md` (required): Instructions in Markdown with YAML frontmatter
-- `scripts/` (optional): Executable code (Python, Bash, etc.)
-- `references/` (optional): Documentation loaded as needed
-- `assets/` (optional): Templates, fonts, icons used in output
-
-Skill folder naming:
-
-- Use kebab-case: `notion-project-setup`
-- No spaces: `Notion Project Setup`
-- No underscores: `notion_project_setup`
-- No capitals: `NotionProjectSetup`
-
-**Locations:**
+The runtime system.
 
 ```text
-Project config: .opencode/skills/<name>/SKILL.md
-Global config: ~/.config/opencode/skills/<name>/SKILL.md
-Project Claude-compatible: .claude/skills/<name>/SKILL.md
-Global Claude-compatible: ~/.claude/skills/<name>/SKILL.md
-Project agent-compatible: .agents/skills/<name>/SKILL.md
-Global agent-compatible: ~/.agents/skills/<name>/SKILL.md
+Claude Code
+OpenCode
+Cursor Agent Runtime
 ```
 
-**Schema:**
+The harness enables the agent to act.
 
-`[What it does] + [When to use it] + [Key capabilities]`
+## Harness vs MCP
 
-```markdown
----
-name: your-skill
-description: [...]
----
+### Harness
 
-# Your Skill Name
+Manages:
 
-# Instructions
-
-### Step 1: [First Major Step]
-
-Clear explanation of what happens.
+```text
+Context
+Memory
+Tools
+Permissions
+Execution
 ```
 
-**Plugins:**
+### MCP
 
-`skill-creator` **plugin** in Claude helps you design and refine skills.
+Provides:
 
-**Usage:**
-
-Can be invoked explicitly using `@`.
-
-### MCPs
-
-MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems.
-
-Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e.g. local files, databases), tools (e.g. search engines, calculators) and workflows (e.g. specialized prompts)—enabling them to access key information and perform tasks.
-
-**Docs:** <https://modelcontextprotocol.io/>
-
-**Locations:**
-
-`.mcp.json`
-
-**Example:**
-
-```json
-{
-  "mcpServers": {
-    "ado": {
-      "command": "cmd",
-      "args": [
-        "/c",
-        "npx",
-        "-y",
-        "@azure-devops/mcp@2.10.0",
-        "ReservationApps",
-        "--authentication",
-        "azcli",
-        "-d",
-        "core",
-        "repositories"
-      ],
-      "env": {
-        "ado_mcp_project": "Takasi"
-      }
-    },
-    "atlassian": {
-      "type": "http",
-      "url": "https://mcp.atlassian.com/v2/mcp"
-    }
-  }
-}
+```text
+External Tools
+External Data Sources
 ```
 
-Useful MCPs:
+Example:
 
-- JIRA (mcp.atlassian.com)
-- AzureDevops CLI
-- Context7.com: Up-to-date docs for AI agents
+```text
+Harness
+  ↓
+MCP Server
+  ↓
+Azure DevOps
+```
 
-More severs: <https://mcpservers.org/>
+The harness uses MCP servers as additional capabilities.
+
+## Why Harnesses Matter
+
+As AI systems become more capable, success depends less on the model and more on the surrounding runtime.
+
+A good harness:
+
+- Provides the right context
+- Exposes the right tools
+- Maintains useful memory
+- Enforces safety controls
+- Coordinates workflows
+
+In many modern agentic systems, the harness is what transforms a powerful model into a productive software engineering assistant.
