@@ -2,6 +2,8 @@
 
 - **ADR**: Architecture Decision Record, a short document that explains why a team made a specific technical or design choice.
 
+- **MCP**: Model Context Protocol, is an open-source standard for connecting AI applications to external systems.
+
 - **PRD**: Product Requirements Document tailored for artificial intelligence and LLM-driven products, or a PRD generated using AI-powered tools.
 
 - **RAG**: Retrieval-Augmented Generation, is a technique that retrieves relevant information from external sources and provides it to an AI model before it generates a response

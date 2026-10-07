@@ -6,8 +6,6 @@ AI-Assisted Coding is the practice of using AI tools to help generate, review, t
 
 Instead of writing every line of code manually, developers collaborate with AI to accelerate development and improve productivity.
 
-AI-Assisted Coding is not about replacing developers; it's about augmenting developers with AI.
-
 Common AI Coding Tools:
 
 - GitHub Copilot
@@ -130,238 +128,235 @@ Human Review
 Merge
 ```
 
-**1. Requirements Review**
+1. **Requirements Review**
 
-    Before implementation, review the requirements.
+   Before implementation, review the requirements.
 
-    Ask AI:
+   Ask AI:
 
-    ```text
-    Review these requirements and identify:
-     
-    - Ambiguities
-    - Missing acceptance criteria
-    - Edge cases
-    - Contradictions
-    ```
+   ```text
+   Review these requirements and identify:
+    
+   - Ambiguities
+   - Missing acceptance criteria
+   - Edge cases
+   - Contradictions
+   ```
 
-    Example:
+   Example:
 
-    ```text
-    Users can cancel bookings.
-    ```
+   ```text
+   Users can cancel bookings.
+   ```
 
-    AI might detect:
+   AI might detect:
 
-    ```text
-    Missing:
-    - Cancellation deadline?
-    - Refund rules?
-    - User permissions?
-    ```
+   ```text
+   Missing:
+   - Cancellation deadline?
+   - Refund rules?
+   - User permissions?
+   ```
 
-**2. Specification Review**
+2. **Specification Review**
 
-    In Spec-Driven Development, specifications are reviewed before coding.
+   In Spec-Driven Development, specifications are reviewed before coding.
 
-    Review checklist:
+   Review checklist:
 
-    Completeness
+   Completeness
 
-    ```text
-    Are all requirements covered?
-    ```
+   ```text
+   Are all requirements covered?
+   ```
 
-    Consistency
+   Consistency
 
-    ```text
-    Do requirements conflict?
-    ```
+   ```text
+   Do requirements conflict?
+   ```
 
-    Testability
+   Testability
 
-    ```text
-    Can acceptance criteria be tested?
-    ```
+   ```text
+   Can acceptance criteria be tested?
+   ```
 
-    Feasibility
+   Feasibility
 
-    ```text
-    Can this realistically be implemented?
-    ```
+   ```text
+   Can this realistically be implemented?
+   ```
 
-**3. Architecture Review**
+3. **Architecture Review**
 
-    Validate design decisions before implementation.
+   Validate design decisions before implementation.
 
-    Prompt:
+   Prompt:
 
-    ```text
-    Review this architecture.
+   ```text
+   Review this architecture.
 
-    Focus on:
+   Focus on:
 
-    - Scalability
-    - Security
-    - Maintainability
-    - Performance
-    - Risks
-    ```
+   - Scalability
+   - Security
+   - Maintainability
+   - Performance
+   - Risks
+   ```
 
-    Common findings:
+   Common findings:
+   - Tight coupling
+   - Missing error handling
+   - Performance bottlenecks
+   - Security concerns
 
-    - Tight coupling
-    - Missing error handling
-    - Performance bottlenecks
-    - Security concerns
+4. **Code Review**
 
-**4. Code Review**
+   One of the most common AI workflows.
 
-    One of the most common AI workflows.
+   Prompt:
 
-    Prompt:
+   ```text
+   Review this code.
 
-    ```text
-    Review this code.
+   Focus on:
 
-    Focus on:
+   - Bugs
+   - Maintainability
+   - Performance
+   - Security
+   - Clean Code principles
 
-    - Bugs
-    - Maintainability
-    - Performance
-    - Security
-    - Clean Code principles
+   Order findings by severity.
+   ```
 
-    Order findings by severity.
-    ```
+   Areas to Review:
 
-    Areas to Review:
+   _Correctness_
 
-    _Correctness_
+   ```text
+   Will it work?
+   ```
 
-    ```text
-    Will it work?
-    ```
+   _Readability_
 
-    _Readability_
+   ```text
+   Is it easy to understand?
+   ```
 
-    ```text
-    Is it easy to understand?
-    ```
+   _Maintainability_
 
-    _Maintainability_
+   ```text
+   Can future developers modify it?
+   ```
 
-    ```text
-    Can future developers modify it?
-    ```
+   _Security_
 
-    _Security_
+   ```text
+   Can it be exploited?
+   ```
 
-    ```text
-    Can it be exploited?
-    ```
+   _Performance_
 
-    _Performance_
+   ```text
+   Will it scale?
+   ```
 
-    ```text
-    Will it scale?
-    ```
+5. **Pull Request Review**
 
-**5. Pull Request Review**
+   Review changes before merging.
 
-    Review changes before merging.
+   Checklist:
+   - Requirements implemented
+   - Tests updated
+   - Documentation updated
+   - No unnecessary complexity
+   - No duplicated logic
 
-    Checklist:
+   AI can perform an initial PR review before human reviewers.
 
-    - Requirements implemented
-    - Tests updated
-    - Documentation updated
-    - No unnecessary complexity
-    - No duplicated logic
+6. **Test Review**
 
-    AI can perform an initial PR review before human reviewers.
+   Review existing tests.
 
-**6. Test Review**
+   Prompt:
 
-    Review existing tests.
+   ```text
+   Analyze these tests.
+    
+   Identify:
+    
+   - Missing scenarios
+   - Edge cases
+   - Untested paths
+   ```
 
-    Prompt:
+   Example findings:
 
-    ```text
-    Analyze these tests.
-     
-    Identify:
-     
-    - Missing scenarios
-    - Edge cases
-    - Untested paths
-    ```
+   ```text
+   Missing:
+    
+   - Invalid email
+   - Empty password
+   - Network failure
+   ```
 
-    Example findings:
+7. **Security Review**
 
-    ```text
-    Missing:
-     
-    - Invalid email
-    - Empty password
-    - Network failure
-    ```
+   Use AI as an additional security reviewer.
 
-**7. Security Review**
+   Prompt:
 
-    Use AI as an additional security reviewer.
+   ```text
+   Analyze this code for:
+    
+   - Injection risks
+   - Authentication issues
+   - Authorization flaws
+   - Data exposure
+   ```
 
-    Prompt:
+   Security reviews should always be validated by experienced engineers.
 
-    ```text
-    Analyze this code for:
-     
-    - Injection risks
-    - Authentication issues
-    - Authorization flaws
-    - Data exposure
-    ```
+8. **Documentation Review**
 
-    Security reviews should always be validated by experienced engineers.
+   Verify documentation quality.
 
-**8. Documentation Review**
+   Check:
+   - Accuracy
+   - Completeness
+   - Readability
+   - Missing examples
 
-    Verify documentation quality.
+   Prompt:
 
-    Check:
+   ```text
+   Review this README.
+    
+   Identify missing information and unclear sections.
+   ```
 
-    - Accuracy
-    - Completeness
-    - Readability
-    - Missing examples
+9. **AI Review Loop**
 
-    Prompt:
+   A common modern workflow:
 
-    ```text
-    Review this README.
-     
-    Identify missing information and unclear sections.
-    ```
+   ```text
+   Implement
+       ↓
+   Self Review
+       ↓
+   AI Review
+       ↓
+   Fix Issues
+       ↓
+   Human Review
+       ↓
+   Merge
+   ```
 
-**9. AI Review Loop**
-
-    A common modern workflow:
-
-    ```text
-    Implement
-        ↓
-    Self Review
-        ↓
-    AI Review
-        ↓
-    Fix Issues
-        ↓
-    Human Review
-        ↓
-    Merge
-    ```
-
-    This greatly reduces reviewer effort.
+   This greatly reduces reviewer effort.
 
 ### Review Prompts
 
