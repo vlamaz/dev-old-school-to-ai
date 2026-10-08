@@ -4,6 +4,8 @@
 
 **Context Engineering** focuses on providing the right information.
 
+Good context engineering means sending only relevant information.
+
 ## What Is Context?
 
 Context is all the information available to the model when generating a response.
@@ -145,9 +147,18 @@ The context window determines how much information the model can "see" before ge
 
 ## Context Compression
 
-Context windows are limited.
+Context windows are limited: every large language model operates within a fixed context window — a hard ceiling on how many tokens it can hold in working memory at once.
 
-Good context engineering means sending only relevant information.
+Context compression is the practice of reducing the volume of information in an agent’s working memory while preserving everything it still needs to complete its task.
+
+### Automatic Context Compaction
+
+Compaction is the practice of taking a conversation nearing the context window limit, summarizing its contents, and reinitiating a new context window with the summary.
+
+In **Claude Code**, for example, implements this by passing the message history to the model to summarize and compress the most critical details.
+The model preserves architectural decisions, unresolved bugs, and implementation details while discarding redundant tool outputs or messages.
+The agent can then continue with this compressed context plus the five most recently accessed files.
+Users get continuity without worrying about context window limitations.
 
 ## Links
 
