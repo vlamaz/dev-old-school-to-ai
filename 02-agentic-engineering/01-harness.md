@@ -213,7 +213,14 @@ The harness manages everything except the reasoning itself.
 
    The harness coordinates that entire process: asks the model what to do, do it, tell it what happened, and ask it again. Until it's ready. (A loop!)
 
-   Loop architecture:
+   The loop continuously consumes:
+   - Context
+   - Tool results
+   - Memory
+
+   and decides the next action.
+
+   **Loop architecture**
 
    ```javascript
     while goal_not_completed:
@@ -230,34 +237,6 @@ The harness manages everything except the reasoning itself.
 
     return result
    ```
-
-   **ReAct loop pattern:**
-
-   A ReAct Loop (Reasoning and Acting) is an agentic execution pattern that alternates reasoning traces with concrete actions.
-
-   Most modern agents use this pattern.
-
-   **Harness components around the loop:**
-
-   ```text
-                   Agent Loop
-                       │
-                       ▼
-             Think → Act → Observe
-                       ▲
-                       │
-         ┌──────────────┼──────────────┐
-         │              │              │
-         ▼              ▼              ▼
-     Context        Tools          Memory
-   ```
-
-   The loop continuously consumes:
-   - Context
-   - Tool results
-   - Memory
-
-   and decides the next action.
 
 #### Example
 
