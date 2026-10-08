@@ -1,8 +1,6 @@
 # Harness
 
-An AI agent harness is the software infrastructure that wraps around a Large Language Model (LLM) to turn it into an active, functional AI agent.
-
-A Harness is the software layer that transforms a Large Language Model (LLM) into a practical AI agent.
+A Harness is the software layer that transforms a LLM into a practical AI agent.
 
 The LLM provides intelligence and reasoning, while the harness provides everything the model needs to operate in the real world.
 
@@ -187,7 +185,7 @@ The harness manages everything except the reasoning itself.
 
 5. **Workflow Orchestration and Execution**
 
-   Most agents follow a reasoning loop:
+   Most agents follow a reasoning **loop**:
 
    ```text
     Observe
@@ -201,7 +199,53 @@ The harness manages everything except the reasoning itself.
     Review
    ```
 
-   The harness coordinates that entire process.
+   The harness coordinates that entire process: asks the model what to do, do it, tell it what happened, and ask it again. Until it's ready. (A loop!)
+
+   Loop architecture:
+
+   ```javascript
+    while goal_not_completed:
+
+        Observe()
+
+        Think()
+
+        Select_Tool()
+
+        Execute_Tool()
+
+        Evaluate()
+
+    return result
+   ```
+
+   **ReAct loop pattern:**
+
+   A ReAct Loop (Reasoning and Acting) is an agentic execution pattern that alternates reasoning traces with concrete actions.
+
+   Most modern agents use this pattern.
+
+   **Harness components around the loop:**
+
+   ```text
+                   Agent Loop
+                       │
+                       ▼
+             Think → Act → Observe
+                       ▲
+                       │
+         ┌──────────────┼──────────────┐
+         │              │              │
+         ▼              ▼              ▼
+     Context        Tools          Memory
+   ```
+
+   The loop continuously consumes:
+   - Context
+   - Tool results
+   - Memory
+
+   and decides the next action.
 
 #### Example
 
