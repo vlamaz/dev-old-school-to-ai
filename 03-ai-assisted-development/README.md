@@ -6,19 +6,21 @@ This folder contains information about **Claude Code**, **OpenCode**, and **GitH
 
 Claude Code is Anthropic's agentic coding tool for working with software projects. This is the main focus of this folder. Add practical setup instructions, workflows, configuration notes, and troubleshooting guidance here.
 
-- Official documentation: <https://code.claude.com/docs>
+- [Official documentation](https://code.claude.com/docs)
+- [Claude Code Quickstart](https://code.claude.com/docs/en/quickstart)
+- [Claude VSCode extension](https://code.claude.com/docs/en/vs-code)
 
 ## OpenCode
 
 OpenCode is an open-source AI coding agent. Add tool-specific setup instructions, workflows, configuration notes, and troubleshooting guidance here.
 
-- Official documentation: <https://opencode.ai/docs/>
+- [Official documentation](https://opencode.ai/docs/)
 
 ## GitHub Copilot CLI
 
 GitHub Copilot CLI brings GitHub Copilot's agentic coding capabilities to the terminal. Add tool-specific setup instructions, workflows, configuration notes, and troubleshooting guidance here.
 
-- Official documentation: <https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli>
+- [Official documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
 
 ## Scope
 
