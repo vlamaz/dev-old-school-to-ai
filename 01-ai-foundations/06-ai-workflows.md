@@ -628,6 +628,61 @@ Instead of writing all documentation manually, developers use AI to generate dra
 
 AI accelerates documentation creation, but developers remain responsible for accuracy and completeness.
 
-Unfortunately, documentation is often outdated because writing it is time-consuming.
+Unfortunately, documentation is often outdated because writing it is time-consuming. AI makes documentation much faster to create and maintain.
 
-AI makes documentation much faster to create and maintain.
+AI can help automate much of it:
+
+```text
+Requirements
+      ↓
+Code
+      ↓
+AI Generates Documentation
+      ↓
+Human Review
+      ↓
+Publish
+```
+
+### Useful Prompts
+
+**Generate README.md**
+
+```text
+Create a professional README.md for this project.
+ 
+Include:
+- Overview
+- Features
+- Installation
+- Usage
+- Development
+```
+
+**Document an API**
+
+```text
+Generate API documentation for this endpoint.
+ 
+Include:
+- Description
+- Request Payload
+- Response Payload
+- Error Responses
+```
+
+**Explain Code**
+
+```text
+Explain this code for a developer unfamiliar with the project.
+```
+
+**Create Architecture Docs**
+
+```text
+Analyze the repository and generate:
+- Architecture Overview
+- Components
+- Responsibilities
+- Mermaid Diagram
+```
