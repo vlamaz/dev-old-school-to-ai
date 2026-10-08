@@ -103,6 +103,18 @@ The harness manages everything except the reasoning itself.
 
    before asking the model to work.
 
+   A good harness continuously manages context.
+
+   The harness decides:
+   - Which files to load
+   - Which files to ignore
+   - What summaries to generate
+   - What information is most relevant
+
+   Instead of providing the entire codebase, a harness retrieves only the information relevant to the task.
+
+   RAG Helps Solve the Problem: A retrieval system can search the repository and select only the most relevant documents.
+
 2. **Tool Management**
 
    The harness exposes tools to the model.
@@ -329,6 +341,27 @@ Review PR
 Generate Specification
 ```
 
+The harness loads it when needed, instead of always keeping it in the context.
+
+**Anatomy of a Skill**
+
+```text
+my-skill/
+├── SKILL.md          # Required: metadata + instructions
+├── scripts/          # Optional: executable code
+├── references/       # Optional: documentation
+├── assets/           # Optional: templates, resources
+└── ...               # Any additional files or directories
+```
+
+The only mandatory file is `SKILL.md`. It has two parts:
+
+- Frontmatter: YAML block at the beginning of the file containing the name and description. The name becomes the command you use to invoke it. The description is what Claude reads to decide whether or not to activate it.
+
+- Body: The instructions in Markdown. This is where you write the workflow, your expertise, the tools to be used, and the available resources
+
+A skill can include many other supporting files.
+
 ### Hooks
 
 Run automatically on events.
@@ -338,6 +371,26 @@ Session Start
 Pre Tool Use
 Post Tool Use
 Task Complete
+```
+
+Hooks let you automate behavior around the agent lifecycle.
+
+**Hook Lifecycle**
+
+```text
+Session Start
+      ↓
+User Request
+      ↓
+Pre-Tool Hook
+      ↓
+Tool Execution
+      ↓
+Post-Tool Hook
+      ↓
+Response
+      ↓
+Stop Hook
 ```
 
 ### MCP (Model Context Protocol)
