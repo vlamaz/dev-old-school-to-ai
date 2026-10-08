@@ -40,7 +40,7 @@ Claude Code CLI options and commands.
 
 **Links:**
 
-- Claude Code Official Docs: https://code.claude.com/docs
+- [Claude Code Official Docs](https://code.claude.com/docs)
 
 ## OpenCode
 
@@ -84,7 +84,7 @@ OpenCode CLI options and commands.
 
 **Links:**
 
-- OpenCode Official Docs: https://opencode.ai/docs
+- [OpenCode Official Docs](https://opencode.ai/docs)
 
 ## GitHub Copilot CLI
 

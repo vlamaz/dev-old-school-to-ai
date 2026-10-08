@@ -264,3 +264,7 @@ A good harness:
 - Coordinates workflows
 
 In many modern agentic systems, the harness is what transforms a powerful model into a productive software engineering assistant.
+
+## Links
+
+- [Harness Engineering: Anatomy, Architecture, and Evolution of Coding Agents](https://arxiv.org/pdf/2609.00006)

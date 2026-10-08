@@ -151,5 +151,5 @@ Good context engineering means sending only relevant information.
 
 ## Links
 
-- LangChain - Context Engineering: https://www.langchain.com/blog/context-engineering-for-agents
-- Context Engineering Guide: https://www.promptingguide.ai/guides/context-engineering-guide
+- [LangChain - Context Engineering](https://www.langchain.com/blog/context-engineering-for-agents)
+- [Context Engineering Guide](https://www.promptingguide.ai/guides/context-engineering-guide)

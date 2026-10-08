@@ -386,5 +386,5 @@ Prompt engineering is the process of writing effective instructions for a model,
 
 ## Links
 
-- OpenAI Developers Docs - Prompting: https://developers.openai.com/api/docs/guides/prompting
-- Prompt Engineering Guide: https://www.promptingguide.ai
+- [OpenAI Developers Docs - Prompting](https://developers.openai.com/api/docs/guides/prompting)
+- [Prompt Engineering Guide](https://www.promptingguide.ai)

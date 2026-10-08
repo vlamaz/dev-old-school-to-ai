@@ -188,5 +188,3 @@ Embeddings are the foundation of:
 - Recommendation systems
 
 Without embeddings, most modern RAG architectures would not exist.
-
-## Links

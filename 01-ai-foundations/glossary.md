@@ -40,4 +40,4 @@
 
 ## Links
 
-- AI Coding Dictionary: https://www.aicodingdictionary.com/
+- [AI Coding Dictionary](https://www.aicodingdictionary.com/)

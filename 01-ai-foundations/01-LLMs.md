@@ -200,6 +200,25 @@ A token is not always a word. It can be:
 
 LLMs read and generate tokens, not raw text. **Tokenization** is How the AI **reads text**.
 
+To estimate the token count for your specific text in Claude, you could use Anthropic’s API token counter: https://platform.claude.com/docs/es/build-with-claude/token-counting
+
+```js
+const client = new Anthropic();
+
+const response = await client.messages.countTokens({
+  model: "claude-opus-5-5",
+  system: "You are a scientist",
+  messages: [
+    {
+      role: "user",
+      content: "Hello, Claude",
+    },
+  ],
+});
+
+console.log(response);
+```
+
 ## RAG (Retrieval-Augmented Generation)
 
 RAG is a technique that allows an AI model to retrieve external information before generating a response.
@@ -232,4 +251,4 @@ See: [RAG](04-rag.md)
 
 ## Links
 
-- Comparison of Models: Intelligence, Performance & Price Analysis: https://artificialanalysis.ai/models
+- [Comparison of Models: Intelligence, Performance & Price Analysis](https://artificialanalysis.ai/models)
