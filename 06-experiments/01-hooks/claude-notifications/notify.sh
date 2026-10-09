@@ -2,22 +2,6 @@
 # Notification hook: show a native OS alert with Claude Code's message.
 # Reads the hook's JSON payload on stdin and uses the "message" field if present.
 
-# Add this to your .claude/settings.json to enable the notification hook:
-# {
-#   "hooks": {
-#     "Notification": [
-#       {
-#         "matcher": "",
-#         "hooks": [
-#           {
-#             "type": "command",
-#             "command": "sh \"${CLAUDE_PROJECT_DIR}/.claude/hooks/notify.sh\""
-#           }
-#         ]
-#       }
-#     ]
-#   }
-# }
 
 
 title="Claude Code"
