@@ -62,7 +62,7 @@ Modern AI is largely based on:
 - Neural Networks
 - Large Language Models (LLMs)
 
-Models such as GPT, Claude, Gemini, and Copilot are trained on massive amounts of data to learn patterns in language and knowledge.
+Models such as GPT, Claude, Gemini, and Llama are trained on massive amounts of data to learn patterns in language and knowledge. Products such as ChatGPT and GitHub Copilot are built on top of these models.
 
 When you ask:
 
@@ -70,7 +70,7 @@ When you ask:
 Create a React component
 ```
 
-the model predicts the most likely sequence of words and code based on everything it learned during training.
+the model generates the answer one token (a small piece of text) at a time, each time choosing a likely next token based on your request and everything it learned during training.
 
 ### AI for Developers
 
@@ -90,6 +90,8 @@ Instead of writing every line manually, developers increasingly focus on:
 - Reviewing AI-generated solutions
 - Making architectural decisions
 - Ensuring quality and security
+
+Day-to-day practices (coding, review, debugging and documentation with AI) are covered in [AI-Assisted Workflows](../03-ai-assisted-development/09-workflows.md).
 
 #### Evolution
 
@@ -111,15 +113,27 @@ AI-Powered Developer
 Designs, specifies, orchestrates, and validates software with AI
 ```
 
+## How to Read This Chapter
+
+The topics build on each other:
+
+1. **LLMs**: what a model is, tokens, the context window, and its limits (hallucinations).
+2. **Prompt Engineering**: how to instruct a model well.
+3. **Embeddings**: how meaning is turned into vectors for semantic search.
+4. **RAG**: how to give a model external knowledge, using embeddings or search.
+5. **Tools**: how a model takes actions, and how tool calling really works.
+6. **Context Engineering**: how to manage everything that goes into the context window, pulling together all the previous topics.
+
+After this chapter, [Agentic Engineering](../02-agentic-engineering/README.md) shows how models, tools and context combine into agents.
+
 ## Topics in this Chapter
 
 1. [LLMs](01-LLMs.md)
 2. [Prompt Engineering](02-prompt-engineering.md)
-3. [Context Engineering](03-context-engineering.md)
+3. [Embeddings](03-embeddings.md)
 4. [RAG](04-rag.md)
-5. [Embeddings](05-embeddings.md)
-6. [AI Workflows](06-ai-workflows.md)
-7. [Tools](07-tools.md)
+5. [Tools](05-tools.md)
+6. [Context Engineering](06-context-engineering.md)
 
 Others:
 
