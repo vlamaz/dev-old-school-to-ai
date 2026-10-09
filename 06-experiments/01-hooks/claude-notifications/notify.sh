@@ -2,8 +2,6 @@
 # Notification hook: show a native OS alert with Claude Code's message.
 # Reads the hook's JSON payload on stdin and uses the "message" field if present.
 
-
-
 title="Claude Code"
 msg=$(sed -n 's/.*"message"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)
 [ -n "$msg" ] || msg="Claude Code is waiting for you"
