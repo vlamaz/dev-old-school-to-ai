@@ -4,20 +4,36 @@ Agents are specialized AI assistants that can be configured for specific tasks a
 
 `AGENT = MODEL + HARNESS`
 
-## Agent anatomy
+Top Coding & Development Agents:
+
+- Claude Code
+- OpenAI Codex
+- Cursor & Devin
+
+## Anatomy of an agent
+
+An agent is usually made of several components:
+
+- LLM: The brain
+- Context: What It Knows
+- Memory: What It Remembers
+- Tools: What It Can Do
+- Skills: How It Works
+- MCPs: What It Can Access
+- Hooks: Automation (on specific events)
 
 ```text
-                   Agent
-                     │
-       ┌─────────────┼─────────────┐
-       │             │             │
-       ▼             ▼             ▼
-    Context       Skills        Memory
-       │             │             │
-       └──────┬──────┼──────┬──────┘
-              │      │      │
-              ▼      ▼      ▼
-            Tools / MCP Servers
+                    Agent
+                      │
+     ┌────────────────┼────────────────┐
+     │                │                │
+     ▼                ▼                ▼
+   Context         Memory           Tools
+     │                │                │
+     └──────────┬─────┼─────┬──────────┘
+                │     │     │
+                ▼     ▼     ▼
+              Skills Hooks MCPs
                      │
                      ▼
                     LLM
@@ -25,7 +41,7 @@ Agents are specialized AI assistants that can be configured for specific tasks a
 
 ## How an Agent Works
 
-Most agents follow a loop:
+Most agents run continuously until the goal is completed, following a loop:
 
 ```text
 Observe
@@ -93,6 +109,7 @@ Check results
 ```
 
 **Repeat**
+
 Until complete.
 
 ### ReAct loop pattern
@@ -103,78 +120,237 @@ Most modern agents use this pattern.
 
 ## Primary agents
 
-Primary agents are the main assistants you interact with directly.
+A Primary Agent is the main agent that receives the user's goal and coordinates the work.
 
-OpenCode comes with two built-in primary agents, Build and Plan.
+Think of it as the project manager.
 
-Invoked using `Shift+Tab`.
+```text
+User
+  ↓
+Primary Agent
+  ↓
+Result
+```
+
+Responsibilities:
+
+- Understand user goals
+- Create plans
+- Delegate work
+- Aggregate results
+- Produce final response
 
 ## Subagents
 
 Subagents are specialized assistants that primary agents can invoke for specific tasks. You can also manually invoke them by @ mentioning them in your messages.
 
-```shell
-@general help me search for this function
-```
+A Subagent is a specialized agent responsible for a specific task.
 
-## Agent Structure
-
-**Locations:**
+Think of them as specialists.
 
 ```text
-Global: ~/.config/opencode/agents/
-Per-project:
-    .opencode/agents/
-    .claude/agents/
+Primary Agent
+      │
+ ┌────┼────┐
+ ▼    ▼    ▼
+QA  Security Architect
 ```
 
-**Example:**
+Each subagent focuses on one concern.
 
-`~/.config/opencode/agents/review.md`
+Example:
 
-```markdown
----
-description: Reviews code for quality and best practices
-mode: subagent
-model: anthropic/claude-sonnet-4-20250514
-temperature: 0.1
-permission:
-  edit: deny
-  bash: deny
----
-
-You are in code review mode. Focus on:
-
-- Code quality and best practices
-- Potential bugs and edge cases
-- Performance implications
-- Security considerations
-
-Provide constructive feedback without making direct changes.
+```text
+Primary Agent
+      │
+ ├──────────────┐
+ ▼              ▼
+Architect     Implementation
+Agent         Agent
+ │              │
+ ▼              ▼
+Design      Generate Code
 ```
 
-### Agent Params
+### Common Subagent Types
 
-**Description**: Brief description
+- Architect Agent
+- Implementation Agent
+- QA Agent
+- Security Agent
+- Documentation Agent
 
-**Temperature**: Control the randomness and creativity of the LLM’s responses with the temperature config.
+### When to Use Subagents
 
-Temperature values typically range from 0.0 to 1.0:
+Use a single agent for:
 
-- 0.0-0.2: Very focused and deterministic responses, ideal for code analysis and planning
-- 0.3-0.5: Balanced responses with some creativity, good for general development tasks
-- 0.6-1.0: More creative and varied responses, useful for brainstorming and exploration
+- Simple tasks
+- Small repositories
+- Quick questions
 
-**Max steps**: Control the maximum number of agentic iterations an agent can perform before being forced to respond with text only. This allows users who wish to control costs to set a limit on agentic actions.
+Use subagents for:
 
-**Disable**: Set to true to disable the agent.
+- Large codebases
+- Complex features
+- Architecture reviews
+- Multi-step workflows
 
-**Prompt**: Specify a custom system prompt file for this agent with the prompt config. The prompt file should contain instructions specific to the agent’s purpose.
+### Primary/subagent message flow
 
-**Model**: Override model.
+A good way to think about it is that the **Primary Agent** acts as an orchestrator, while **Subagents** act as specialists.
 
-**Permissions**: You can configure permissions to manage what actions an agent can take. Each permission key can be set to:
+```text
+User
+ │
+ ▼
+Primary Agent
+ │
+ ├──► Architect Agent
+ │         │
+ │         └──► Design Recommendation
+ │
+ ├──► Backend Agent
+ │         │
+ │         └──► Implementation Plan
+ │
+ ├──► QA Agent
+ │         │
+ │         └──► Test Strategy
+ │
+ ▼
+Primary Agent
+ │
+ ▼
+Final Response`
+```
 
-- "ask" — Prompt for approval before running the tool
-- "allow" — Allow all operations without approval
-- "deny" — Disable the tool
+Sequence diagram:
+
+```text
+┌────────┐
+│  User  │
+└────┬───┘
+     │
+     ▼
+┌───────────────┐
+│ Primary Agent │
+└───────┬───────┘
+        │
+        ├─────────────────► Architect Agent
+        │                  │
+        │◄─────────────────┘
+        │
+        ├─────────────────► Backend Agent
+        │                  │
+        │◄─────────────────┘
+        │
+        ├─────────────────► QA Agent
+        │                  │
+        │◄─────────────────┘
+        │
+        ▼
+┌───────────────┐
+│ Final Result  │
+└───────────────┘
+```
+
+## Multi-Agent Workflow
+
+```text
+User
+ │
+ ▼
+Primary Agent
+ │
+ ├──► Architect Agent
+ │         │
+ │         └──► Design Recommendation
+ │
+ ├──► Backend Agent
+ │         │
+ │         └──► Implementation Plan
+ │
+ ├──► QA Agent
+ │         │
+ │         └──► Test Strategy
+ │
+ ▼
+Primary Agent
+ │
+ ▼
+Final Response
+```
+
+A powerful multi-agent system doesn't call subagents one after another. Instead, it delegates work in parallel and then aggregates the results.
+
+```text
+User
+ │
+ ▼
+Primary Agent
+ │
+ ├─────────────┬─────────────┬─────────────┐
+ ▼             ▼             ▼             ▼
+Architect   Backend        QA        Security
+ Agent       Agent        Agent        Agent
+ │             │             │             │
+ └─────────────┴─────────────┴─────────────┘
+                      │
+                      ▼
+               Primary Agent
+                      │
+                      ▼
+                Final Result
+```
+
+Sequece diagram:
+
+```text
+User
+ │
+ ▼
+┌───────────────────┐
+│   Primary Agent   │
+└─────────┬─────────┘
+          │
+          ├──────────────┬──────────────┬──────────────┐
+          │              │              │              │
+          ▼              ▼              ▼              ▼
+ ┌────────────┐ ┌────────────┐ ┌────────────┐ ┌────────────┐
+ │ Architect  │ │  Backend   │ │     QA     │ │  Security  │
+ │   Agent    │ │   Agent    │ │   Agent    │ │   Agent    │
+ └─────┬──────┘ └─────┬──────┘ └─────┬──────┘ └─────┬──────┘
+       │              │              │              │
+       └──────────────┴──────────────┴──────────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │   Primary Agent   │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                        Final Answer
+```
+
+## Failure & Timeout Handling in Multi-Agent Systems
+
+A robust harness assumes that subagents will fail sometimes.
+
+Common failures:
+
+- Timeout
+- Tool failure
+- MCP unavailable
+- Invalid response
+- Hallucinated response
+- Agent crash
+
+A good Primary Agent must handle these gracefully.
+
+Strategies:
+
+- Retry Strategy: Instead of failing immediately, retry 2-3 times.
+- Parallel Execution with Failure Isolation: all subagents running in parallel, If one agent fails, not the whole workflow fails: use `Promise.allSettled()`
+- Failure-Tolerant Flow
+- Fallback Agents: Sometimes another agent can take over.
+- Confidence-Based Aggregation: The Primary Agent can score results. This helps avoid false confidence.
