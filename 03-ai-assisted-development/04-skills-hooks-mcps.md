@@ -42,12 +42,9 @@ Include proper typing and basic structure.
 
 ## Skills
 
-A skill is a set of instructions - packaged as a simple folder - that teaches Claude
-how to handle specific tasks or workflows.
-Skills provide the recipes: step-by-step instructions on how to create something
-valuable.
+A skill is a set of instructions - packaged as a simple folder - that teaches Claude how to handle specific tasks or workflows.
 
-<https://www.skills.sh/>
+Skills provide the recipes: step-by-step instructions on how to create something valuable.
 
 Create one folder per skill name and put inside it:
 
@@ -232,3 +229,4 @@ More severs: <https://mcpservers.org/>
 ## Links
 
 - [Agent Harness by Gentleman Programming](https://www.youtube.com/watch?v=5Q7jV8TpMXA)
+- [The Open Agent Skills Ecosystem](https://www.skills.sh/)
