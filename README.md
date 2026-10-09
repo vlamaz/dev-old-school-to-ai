@@ -71,7 +71,10 @@ Practical notes on AI coding tools, scoped to **Claude Code** (main focus), **Op
 
 1. [Commands](03-ai-assisted-development/01-commands.md)
 2. [Models & Effort](03-ai-assisted-development/02-models-and-effort.md)
-3. [Harness & Context](03-ai-assisted-development/03-context.md)
+3. [Harness: Context](03-ai-assisted-development/03-context.md)
+4. [Harness: Skills, Hooks & MCPs](03-ai-assisted-development/04-skills-hooks-mcps.md)
+5. [Harness: Tools](03-ai-assisted-development/06-tools.md)
+6. [Agents](03-ai-assisted-development/07-agents.md)
 
 ### [04 · Spec-Driven Development](04-spec-driven-development/README.md)
 
