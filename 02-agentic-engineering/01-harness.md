@@ -457,6 +457,8 @@ The harness uses MCP servers as additional capabilities.
 
 As AI systems become more capable, success depends less on the model and more on the surrounding runtime.
 
+A better harness can give a model better context, safer tool use, and more reliable results.
+
 A good harness:
 
 - Provides the right context

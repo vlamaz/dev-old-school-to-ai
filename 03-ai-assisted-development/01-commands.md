@@ -6,12 +6,13 @@ Claude Code CLI options and commands.
 
 **CLI:**
 
-| Command         | Description                      |
-| --------------- | -------------------------------- |
-| `claude`        | Opens claude in current folder   |
-| `claude --help` | Show help and available commands |
-| `claude -r`     | Resumes conversation             |
-| `claude -rc`    | Remote control                   |
+| Command            | Description                                                         |
+| ------------------ | ------------------------------------------------------------------- |
+| `claude`           | Opens claude in current folder                                      |
+| `claude --help`    | Show help and available commands                                    |
+| `claude -r`        | Resumes conversation                                                |
+| `claude -rc`       | Remote control                                                      |
+| `claude --advisor` | Combine different models so that each one handles what it does best |
 
 **Commands:**
 
@@ -41,6 +42,7 @@ Claude Code CLI options and commands.
 **Links:**
 
 - [Claude Code Official Docs](https://code.claude.com/docs)
+- [Claude Advisor Tool](https://code.claude.com/docs/en/advisor)
 
 ## OpenCode
 
