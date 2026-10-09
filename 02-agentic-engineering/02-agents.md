@@ -354,3 +354,38 @@ Strategies:
 - Failure-Tolerant Flow
 - Fallback Agents: Sometimes another agent can take over.
 - Confidence-Based Aggregation: The Primary Agent can score results. This helps avoid false confidence.
+
+### Retry Policy Matrix
+
+Not all agent failures should be treated the same. A Primary Agent should apply different retry strategies depending on the agent type and the failure.
+
+```text
+┌──────────────────┬─────────────┬─────────┬──────────┬───────────────┐
+│ Agent Type       │ Timeout     │ Retries │ Backoff  │ Failure Mode  │
+├──────────────────┼─────────────┼─────────┼──────────┼───────────────┤
+│ Architect        │ 30s         │ 2       │ Linear   │ Continue      │
+│ Backend          │ 60s         │ 3       │ Exp      │ Fail Task     │
+│ QA               │ 45s         │ 2       │ Linear   │ Continue      │
+│ Security         │ 30s         │ 3       │ Exp      │ Fail Task     │
+│ Documentation    │ 20s         │ 1       │ None     │ Continue      │
+│ Optimization     │ 20s         │ 1       │ None     │ Continue      │
+│ MCP Query        │ 10s         │ 3       │ Exp      │ Fallback      │
+│ Git Operations   │ 15s         │ 2       │ Linear   │ Fail Step     │
+└──────────────────┴─────────────┴─────────┴──────────┴───────────────┘
+```
+
+**Rule of Thumb**
+
+```text
+Critical Agents
+    Retry + Fail
+
+Important Agents
+    Retry + Warn
+
+Optional Agents
+    Retry + Ignore
+
+External MCPs
+    Retry + Fallback
+```

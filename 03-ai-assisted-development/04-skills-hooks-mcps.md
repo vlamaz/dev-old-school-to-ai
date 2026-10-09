@@ -1,18 +1,24 @@
-# Harness
+# Harness: Skills
+
+User-defined commands & Skills.
 
 ## User-defined commands
 
 Commands for quick, deterministic, and single-use tasks. The user activates them manually.
 
+> ⚠️User-defined custom slash commands in **Claude Code** have been officially deprecated and merged into the new Skills system
+
 **Locations:**
 
 ```text
-Global: ~/.config/opencode/commands/
-Per-project:
-.opencode/commands/<name>.md
-.claude/commands/<name>.md
-.agents/commands/<name>.md
+Global:
+  ~/.config/opencode/commands/<name>.md
+  ~/.claude/skills/<name>/SKILL.md
 
+Per-project:
+  .opencode/commands/<name>.md
+  .claude/skills/<name>/SKILL.md
+  .agents/commands/<name>.md
 ```
 
 **Example:**
@@ -30,11 +36,81 @@ Include proper typing and basic structure.
 
 **Usage:**
 
-Invoked using `/<name>`
+```text
+/component <component-name-arg>
+```
+
+## Skills
+
+A skill is a set of instructions - packaged as a simple folder - that teaches Claude
+how to handle specific tasks or workflows.
+Skills provide the recipes: step-by-step instructions on how to create something
+valuable.
+
+<https://www.skills.sh/>
+
+Create one folder per skill name and put inside it:
+
+- `SKILL.md` (required): Instructions in Markdown with YAML frontmatter
+- `scripts/` (optional): Executable code (Python, Bash, etc.)
+- `references/` (optional): Documentation loaded as needed
+- `assets/` (optional): Templates, fonts, icons used in output
+
+Skill folder naming:
+
+- Use kebab-case: `notion-project-setup`
+- No spaces: `Notion Project Setup`
+- No underscores: `notion_project_setup`
+- No capitals: `NotionProjectSetup`
+
+**Locations:**
 
 ```text
-/component <name>
+Project config: .opencode/skills/<name>/SKILL.md
+Global config: ~/.config/opencode/skills/<name>/SKILL.md
+Project Claude-compatible: .claude/skills/<name>/SKILL.md
+Global Claude-compatible: ~/.claude/skills/<name>/SKILL.md
+Project agent-compatible: .agents/skills/<name>/SKILL.md
+Global agent-compatible: ~/.agents/skills/<name>/SKILL.md
 ```
+
+```text
+Global:
+  ~/.config/opencode/skills/<name>/SKILL.md
+  ~/.claude/commands/<command-name>.md
+
+Per-project:
+  .opencode/commands/<name>.md
+  .claude/commands/<name>.md
+  .agents/commands/<name>.md
+```
+
+**Schema:**
+
+`[What it does] + [When to use it] + [Key capabilities]`
+
+```markdown
+---
+name: your-skill
+description: [...]
+---
+
+# Your Skill Name
+
+# Instructions
+
+### Step 1: [First Major Step]
+
+Clear explanation of what happens.
+```
+
+**Plugins:**
+
+`skill-creator` **plugin** in Claude helps you design and refine skills.
+
+**Usage:**
+
+Can be invoked explicitly using `@`.
 
 ## Hooks
 
@@ -101,67 +177,6 @@ More used ones:
 
 - When it fires: Whenever Claude triggers a notification alert (e.g., when it is waiting for your manual permission or finishes a long-running background task).
 - Primary Use Case: Team alerting. Used to forward the internal event out to systems like Slack, Discord, or desktop push notifications so you can safely look away while the AI is working.
-
-## Skills
-
-A skill is a set of instructions - packaged as a simple folder - that teaches Claude
-how to handle specific tasks or workflows.
-Skills provide the recipes: step-by-step instructions on how to create something
-valuable.
-
-<https://www.skills.sh/>
-
-Create one folder per skill name and put inside it:
-
-- `SKILL.md` (required): Instructions in Markdown with YAML frontmatter
-- `scripts/` (optional): Executable code (Python, Bash, etc.)
-- `references/` (optional): Documentation loaded as needed
-- `assets/` (optional): Templates, fonts, icons used in output
-
-Skill folder naming:
-
-- Use kebab-case: `notion-project-setup`
-- No spaces: `Notion Project Setup`
-- No underscores: `notion_project_setup`
-- No capitals: `NotionProjectSetup`
-
-**Locations:**
-
-```text
-Project config: .opencode/skills/<name>/SKILL.md
-Global config: ~/.config/opencode/skills/<name>/SKILL.md
-Project Claude-compatible: .claude/skills/<name>/SKILL.md
-Global Claude-compatible: ~/.claude/skills/<name>/SKILL.md
-Project agent-compatible: .agents/skills/<name>/SKILL.md
-Global agent-compatible: ~/.agents/skills/<name>/SKILL.md
-```
-
-**Schema:**
-
-`[What it does] + [When to use it] + [Key capabilities]`
-
-```markdown
----
-name: your-skill
-description: [...]
----
-
-# Your Skill Name
-
-# Instructions
-
-### Step 1: [First Major Step]
-
-Clear explanation of what happens.
-```
-
-**Plugins:**
-
-`skill-creator` **plugin** in Claude helps you design and refine skills.
-
-**Usage:**
-
-Can be invoked explicitly using `@`.
 
 ### MCPs
 

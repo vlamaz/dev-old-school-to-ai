@@ -32,4 +32,7 @@ GitHub Copilot CLI brings GitHub Copilot's agentic coding capabilities to the te
 
 1. [Commands](01-commands.md)
 2. [Models & Effort](02-models-and-effort.md)
-3. [Harness & Context](03-context.md)
+3. [Harness: Context](03-context.md)
+4. [Harness: Skills, Hooks & MCPs](04-skills-hooks-mcps.md)
+5. [Harness: Tools](06-tools.md)
+6. [Agents](07-agents.md)
