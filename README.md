@@ -37,7 +37,9 @@ The chapters build on each other, so reading them in order works best:
 03 AI-Assisted Development
   ↓  hands-on with Claude Code, OpenCode, and GitHub Copilot CLI
 04 Spec-Driven Development
-     specifications as the source of truth for AI-generated code
+  ↓  specifications as the source of truth for AI-generated code
+05 LLM Security
+     main security risks in applications built on LLMs
 ```
 
 New to the vocabulary? Keep the [Glossary](01-ai-foundations/glossary.md) open while reading. Every term links back to the note that explains it.
