@@ -34,11 +34,11 @@
 
 - **Cosine similarity**: A measure of how similar two embeddings are, based on the angle between the vectors. It is the most common choice for text. See [Measuring Similarity](03-embeddings.md#measuring-similarity).
 
-- **Data poisoning**: An attack in which corrupted training, fine-tuning or retrieval data makes a model behave in a way the attacker wants, such as following a hidden trigger. See [Data and Model Poisoning](../08-llm-security/04-data-and-model-poisoning.md).
+- **Data poisoning**: An attack in which corrupted training, fine-tuning or retrieval data makes a model behave in a way the attacker wants, such as following a hidden trigger. See [Data and Model Poisoning](../05-llm-security/04-data-and-model-poisoning.md).
 
 - **Delta spec**: In OpenSpec, a spec inside a change that describes only the requirements the change adds, modifies, or removes. It is merged into the main specs when the change is archived. See [OpenSpec](../04-spec-driven-development/03-openspec.md).
 
-- **Denial of wallet**: An attack or bug that drives up an LLM application's token costs until the budget is spent, rather than taking the service down. See [Unbounded Consumption](../08-llm-security/09-unbounded-consumption.md).
+- **Denial of wallet**: An attack or bug that drives up an LLM application's token costs until the budget is spent, rather than taking the service down. See [Unbounded Consumption](../05-llm-security/09-unbounded-consumption.md).
 
 - **EARS**: Easy Approach to Requirements Syntax, a set of keyword templates (While, When, Where, If/then) for writing unambiguous, testable requirements. See [EARS](../04-spec-driven-development/02-ears.md).
 
@@ -46,7 +46,7 @@
 
 - **Embedding**: A numerical vector representation of data that captures meaning, so systems can compare and retrieve information by semantic similarity. See [Embeddings](03-embeddings.md).
 
-- **Embedding inversion**: Reconstructing parts of the original text from its embedding vector, which is why embeddings should be treated as sensitive data. See [Vector and Embedding Weaknesses](../08-llm-security/07-vectors-and-embeddings.md).
+- **Embedding inversion**: Reconstructing parts of the original text from its embedding vector, which is why embeddings should be treated as sensitive data. See [Vector and Embedding Weaknesses](../05-llm-security/07-vectors-and-embeddings.md).
 
 - **Few-shot prompting**: Including a few input/output examples in a prompt to show the model the expected pattern or format. See [Prompting Patterns](02-prompt-engineering.md#prompting-patterns).
 
@@ -64,11 +64,11 @@
 
 - **Hybrid search**: Running keyword search (such as BM25) and embedding search together and merging the results. It usually beats either one alone. See [Hybrid Search](04-rag.md#hybrid-search).
 
-- **Indirect prompt injection**: Prompt injection in which the malicious instructions arrive through content the application retrieves or processes, such as a web page or a RAG document, rather than from the user. See [Direct and Indirect Injection](../08-llm-security/01-prompt-injection.md#direct-and-indirect-injection).
+- **Indirect prompt injection**: Prompt injection in which the malicious instructions arrive through content the application retrieves or processes, such as a web page or a RAG document, rather than from the user. See [Direct and Indirect Injection](../05-llm-security/01-prompt-injection.md#direct-and-indirect-injection).
 
 - **Inference**: Using a trained model to generate a prediction or response. See [Inference](01-LLMs.md#inference).
 
-- **Jailbreak**: A prompt that tries to make a model ignore its safety training or rules, usually typed directly by the user. See [Direct and Indirect Injection](../08-llm-security/01-prompt-injection.md#direct-and-indirect-injection).
+- **Jailbreak**: A prompt that tries to make a model ignore its safety training or rules, usually typed directly by the user. See [Direct and Indirect Injection](../05-llm-security/01-prompt-injection.md#direct-and-indirect-injection).
 
 - **Knowledge cutoff**: The date at which a model's training data ends. The model knows nothing after it unless that information is provided in the context. See [Pre-training](01-LLMs.md#pre-training).
 
@@ -114,7 +114,7 @@
 
 - **Skill**: A folder with a `SKILL.md` (frontmatter plus instructions) and optional scripts and references. Only its name and description stay in context; the full content loads when the task matches. See [Harness: Skills](../02-agentic-engineering/02-harness.md#skills) and [Skills in each tool](../03-ai-assisted-development/05-skills.md).
 
-- **Slopsquatting**: An attack in which someone registers a package name that an LLM tends to invent, so that installing the hallucinated name installs malicious code. See [Supply Chain](../08-llm-security/03-supply-chain.md).
+- **Slopsquatting**: An attack in which someone registers a package name that an LLM tends to invent, so that installing the hallucinated name installs malicious code. See [Supply Chain](../05-llm-security/03-supply-chain.md).
 
 - **Structured outputs**: An API feature that constrains the model's response to a JSON Schema you provide, so automation gets valid, parseable output. See [Prompting Patterns](02-prompt-engineering.md#prompting-patterns).
 
@@ -132,7 +132,7 @@
 
 - **Tool definition**: The name, description, and JSON Schema of parameters that the application sends with each request to tell the model a tool exists and how to call it. See [Tool Definitions](05-tools.md#tool-definitions).
 
-- **Unbounded consumption**: Letting a user, a bug or a runaway agent use tokens, time or compute without limit, which can cause outages and large bills. See [Unbounded Consumption](../08-llm-security/09-unbounded-consumption.md).
+- **Unbounded consumption**: Letting a user, a bug or a runaway agent use tokens, time or compute without limit, which can cause outages and large bills. See [Unbounded Consumption](../05-llm-security/09-unbounded-consumption.md).
 
 - **Vector database**: A database optimized for storing and searching embeddings, typically to find content semantically similar to a query. See [What Is a Vector Database?](03-embeddings.md#what-is-a-vector-database) and [RAG](04-rag.md).
 

@@ -18,8 +18,8 @@ npx eslint 01-ai-foundations/04-rag.md    # lint a single file
 ## Structure and conventions
 
 - Content chapters are numbered folders (`NN-kebab-name/`), meant to be read in order: `01` foundations → `02` agentic engineering → `03` AI-assisted development tools → `04` spec-driven development.
-- `08-llm-security/` is a content chapter that can be read after `02`. It took the next free number, after the placeholder folders `05`–`07`, so their numbers and existing links stay unchanged.
-- `05-projects/` and `06-experiments/` are planned (🔜) and empty. `07-resources/` is in progress (🚧) and holds reusable material in numbered subfolders (e.g. `01-prompts/`) instead of topic notes. None of them has a chapter README yet.
+- `05-llm-security/` is a content chapter that can be read after `02`. It took the next free number, after the placeholder folders `05`–`07`, so their numbers and existing links stay unchanged.
+- `06-projects/` and `08-experiments/` are planned (🔜) and empty. `07-resources/` is in progress (🚧) and holds reusable material in numbered subfolders (e.g. `01-prompts/`) instead of topic notes. None of them has a chapter README yet.
 - Each chapter has a `README.md` with an intro and a closing `## Topics in this Chapter` section: a numbered list linking to the chapter's topic files. Topic files are named `NN-topic.md`, numbered without gaps, and their order matches that list.
 - The topic lists are duplicated in the root `README.md` under `## 📚 Contents`, and the folder status (✅/🚧/🔜) appears again under `## 📂 Repository Structure`. When adding, renaming, or renumbering a topic file, update the chapter README **and** the root README. They have drifted before.
 - Don't renumber files unless asked, because that breaks inbound links (from other chapters and the glossary).
