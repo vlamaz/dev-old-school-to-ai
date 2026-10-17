@@ -4,6 +4,8 @@ An agent can read your files, run commands, call APIs and push code. That makes 
 
 The model cannot be made fully trustworthy. Security comes from the harness and the environment around it.
 
+This note covers risks specific to agents. For the application-level risks of LLM systems in general (data disclosure, output handling, poisoning, consumption and more), see [LLM Security](../08-llm-security/README.md).
+
 ## The Main Risks
 
 - **Prompt injection**: instructions hidden in content the agent reads.

@@ -90,6 +90,20 @@ Write and refine specifications first, then let them drive design, implementatio
 2. [EARS (Easy Approach to Requirements Syntax)](04-spec-driven-development/02-ears.md)
 3. [OpenSpec](04-spec-driven-development/03-openspec.md)
 
+### [08 · LLM Security](08-llm-security/README.md)
+
+The main security risks in applications built on LLMs, from the OWASP Top 10 for LLM Applications, and how to avoid or reduce each one.
+
+1. [Prompt Injection](08-llm-security/01-prompt-injection.md)
+2. [Sensitive Information Disclosure](08-llm-security/02-sensitive-information-disclosure.md)
+3. [Supply Chain](08-llm-security/03-supply-chain.md)
+4. [Data and Model Poisoning](08-llm-security/04-data-and-model-poisoning.md)
+5. [Improper Output Handling](08-llm-security/05-improper-output-handling.md)
+6. [System Prompt Leakage](08-llm-security/06-system-prompt-leakage.md)
+7. [Vector and Embedding Weaknesses](08-llm-security/07-vectors-and-embeddings.md)
+8. [Misinformation](08-llm-security/08-misinformation.md)
+9. [Unbounded Consumption](08-llm-security/09-unbounded-consumption.md)
+
 ## 🛠 Topics Covered
 
 - AI Fundamentals
@@ -102,6 +116,7 @@ Write and refine specifications first, then let them drive design, implementatio
 - Spec-Driven Development
 - AI-Assisted Coding
 - Agent Security, Evaluation & Observability
+- LLM Security (OWASP Top 10 for LLM Applications)
 - Productivity & Developer Experience
 
 ## 📂 Repository Structure
@@ -114,7 +129,8 @@ Write and refine specifications first, then let them drive design, implementatio
 ├── 04-spec-driven-development/   ✅ SDD, EARS, OpenSpec
 ├── 05-projects/                  🔜 Real projects built with AI
 ├── 06-experiments/               🔜 Small experiments and comparisons
-└── 07-resources/                 🚧 Reusable prompts; links, courses, and references to come
+├── 07-resources/                 🚧 Reusable prompts; links, courses, and references to come
+└── 08-llm-security/              ✅ Prompt injection, data leaks, supply chain, poisoning, misinformation
 ```
 
 ✅ = available · 🚧 = in progress · 🔜 = planned
